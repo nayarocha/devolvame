@@ -1,6 +1,5 @@
 package br.edu.ifrn;
 
-import javax.servlet.ServletContext;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,16 +18,28 @@ public class DevolvameApplication implements ApplicationContextAware {
 		SpringApplication.run(DevolvameApplication.class, args);
                 
         }
-                
-               
                 @RequestMapping("/sair")
                 public void closeApp(){
-                    ((ConfigurableWebApplicationContext)this.context).close();
+                    password("devolva");
                 }
 
                 @Override
                 public void setApplicationContext(ApplicationContext ac) throws BeansException {
                     context = ac;
                 }
+                
+                @RequestMapping("/teste")
+                public String execute() {
+                    System.out.println("testando");
+                return "Apenas um teste";
+                }
+                
+                public void password(String string){
+                  if (string == "devolva")
+                      ((ConfigurableWebApplicationContext)this.context).close();
+                  else {
+                      System.out.println("Senha incorreta");
+                  }
+                } 
 }
 
