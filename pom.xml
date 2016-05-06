@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.edu.ifrn</groupId>
-    <artifactId>conta</artifactId>
+    <artifactId>devolvame</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -341,37 +341,58 @@
         </profile>        
     </profiles>
 
-    <name>conta</name>
-    <description>Conta do Desenvolvimento de Sistemas Corporativos</description>
-    <url>https://github.com/persapiens/conta</url>
+    <name>devolvame</name>
+    <description>Aplicativo TheBooks do Desenvolvimento de Sistemas Corporativos</description>
+    <url>https://github.com/nayarocha/devolvame.git</url>
     <inceptionYear>2016</inceptionYear>
 
     <!-- Issue Managment -->
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/persapiens/conta/issues</url>
+        <url>https://github.com/nayarocha/devolvame/issues</url>
     </issueManagement>
 
     <!-- SCM -->
     <scm>
-        <connection>scm:git:https://github.com/persapiens/conta.git</connection>
-        <developerConnection>scm:git:https://github.com/persapiens/conta.git</developerConnection>
-        <url>scm:git:https://github.com/persapiens/conta.git</url>
+        <connection>scm:git:https://github.com/nayarocha/devolvame.git</connection>
+        <developerConnection>scm:git:https://github.com/nayarocha/devolvame.git</developerConnection>
+        <url>scm:git:https://github.com/nayarocha/devolvame.git</url>
         <tag>HEAD</tag>
     </scm>
 
     <!-- Organization -->
     <organization>
-        <name>Persapiens</name>
-        <url>https://github.com/persapiens</url>
+        <name>nayarocha</name>
+        <url>https://github.com/nayarocha</url>
     </organization>
     
     <developers>
         <developer>
-            <id>persapiens</id>
-            <name>Marcelo Romulo Fernandes</name>
-            <email>persapiens@gmail.com</email>
+            <id>nirvana</id>
+            <name>Nirvana Dantas</name>
+            <email>nirvanadesara@gmail.com</email>
             <timezone>-3</timezone>
         </developer>
+        
+        <developer>
+            <id>nayarocha</id>
+            <name>Nayara Rocha</name>
+            <email>nayaarocha@gmail</email>
+            <timezone>-3</timezone>
+        </developer>
+        
+         <developer>
+            <id>00s</id>
+            <name>Adolfo Melo</name>
+            <email>adf.melo@gmail.com</email>
+            <timezone>-3</timezone>
+        </developer>
+        
+        <developer>
+            <id>pedror14</id>
+            <name>Pedro Rafael</name>
+            <email>pedrorafael0251@gmail.com</email>
+            <timezone>-3</timezone>
+        </developer>   
     </developers>
 </project>
