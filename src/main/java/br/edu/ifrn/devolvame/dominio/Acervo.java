@@ -16,7 +16,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Acervo {
     private int idAcervo;
-    private int idUsuario;
+    private Usuario idUsuario;
     private Set<Livro> livros;
     
 }

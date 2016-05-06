@@ -24,5 +24,6 @@ public class Livro {
     private int quant;
     private Categoria categoria;
     private Autor autor;
-    
+    //Status do livro - emprestado/disponivel
+    private int status;
 }

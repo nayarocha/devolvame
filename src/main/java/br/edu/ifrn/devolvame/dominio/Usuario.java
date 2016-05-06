@@ -1,4 +1,5 @@
 package br.edu.ifrn.devolvame.dominio;
+import java.util.Set;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,4 +22,7 @@ public class Usuario {
     private int telefone;
     private byte[] img;
     private Acervo acervo; 
+    
+    private Set<Emprestimo> listagemEmprestimo; 
+    private Set<Troca> listagemTroca; 
 }

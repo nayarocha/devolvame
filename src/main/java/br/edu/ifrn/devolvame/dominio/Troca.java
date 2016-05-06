@@ -14,8 +14,8 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Troca {
     private int idTroca;
-    private int idDonoLivro;
-    private int idDestinatario;
-    private int idLivro;
+    private Usuario donoLivro;
+    private Usuario destinatario;
+    private Livro livro;
     
 }

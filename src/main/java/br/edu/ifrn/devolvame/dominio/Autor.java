@@ -14,6 +14,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Autor {
     private int idAutor;
-    private String nome;
+    private String autor;
     
 }
