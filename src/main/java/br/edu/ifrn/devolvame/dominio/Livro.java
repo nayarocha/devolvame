@@ -1,4 +1,5 @@
 package br.edu.ifrn.devolvame.dominio;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,8 +9,8 @@ import lombok.ToString;
  *
  * @author nayarocha
  */
-@Getter
-@Setter
+@Getter(AccessLevel.NONE)
+@Setter(AccessLevel.NONE)
 @ToString
 @EqualsAndHashCode
 public class Livro {
