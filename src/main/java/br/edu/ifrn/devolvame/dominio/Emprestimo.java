@@ -6,6 +6,7 @@
 package br.edu.ifrn.devolvame.dominio;
 
 import java.util.Date;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,12 +19,16 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(exclude = {"idEmprestimo"})
+@Builder
 public class Emprestimo {
     private int idEmprestimo;
     private Usuario donoLivro;
     private Usuario destinatario;
     private Livro livro;
     private Date data;
+    
+    
+   
     
 }
