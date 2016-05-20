@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter(AccessLevel.NONE)
 @Setter(AccessLevel.NONE)
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(of = {"titulo"})
 @Builder
 public class Livro {
     private int idLivro;

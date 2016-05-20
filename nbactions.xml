@@ -58,7 +58,6 @@
         </goals>
         <properties>
             <exec.args>-classpath %classpath br.edu.ifrn.devolvame.DevolvameApplication</exec.args>
-           <!-- <exec.args>-classpath %classpath br.edu.ifrn.DevolvameApplication</exec.args>-->
             <exec.executable>java</exec.executable>
         </properties>
     </action>
@@ -73,7 +72,6 @@
         </goals>
         <properties>
             <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath br.edu.ifrn.devolvame.DevolvameApplication</exec.args>
-            <!--<exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath br.edu.ifrn.DevolvameApplication</exec.args>-->
             <exec.executable>java</exec.executable>
             <jpda.listen>true</jpda.listen>
         </properties>
@@ -89,7 +87,6 @@
         </goals>
         <properties>
             <exec.args>-classpath %classpath br.edu.ifrn.devolvame.DevolvameApplication</exec.args>
-            <!--<exec.args>-classpath %classpath br.edu.ifrn.DevolvameApplication</exec.args>-->
             <exec.executable>java</exec.executable>
         </properties>
     </action>
