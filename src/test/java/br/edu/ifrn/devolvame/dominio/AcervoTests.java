@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.ifrn.devolvame.dominio;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,7 +6,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author adf
+ * @author Adolfo Melo
  */
 
 @Test
@@ -25,34 +18,33 @@ public class AcervoTests {
     private static final String outra_editora = "NOBEL";
     private static final String titulo = "The Book is on the Table";
     private static final String outro_titulo = "The Book is on the Tablet";
-    Set<Livro> livros, outrosLivros;
+    Set<Livro> livros = new HashSet<>();
+    Set<Livro> outrosLivros = new HashSet<>();
+    
     Usuario user, anotherUser;
-
-    /**
-     * Os acervos são iguais se a coleção de livros for a mesma
-     */
+    
+    /*
+       Os acervos são iguais se a coleção de livros for a mesma
+    */
     public void acervosSaoIguais(){
         user = Usuario.builder().email(EMAIL).nome(NOME).build();
-        anotherUser = Usuario.builder().email(EMAIL).nome(OUTRO_NOME).build();
-        
-        livros = new HashSet<>();
-        outrosLivros = new HashSet<>();
-        
+        anotherUser = Usuario.builder().email(EMAIL).nome(OUTRO_NOME).build();    
         Livro livro = Livro.builder().titulo(titulo).editora(EDITORA).build();
         livros.add(livro);
         outrosLivros.add(livro);
         
         assertThat(Acervo.builder().idUsuario(user).livros(livros))
-                .isEqualTo(Acervo.builder().idUsuario(anotherUser).livros(outrosLivros));
+                .isNotEqualTo(Acervo.builder().idUsuario(anotherUser).livros(livros));
     }
     
     public void acervosSaoDiferentes(){
-        
+        Livro livro = Livro.builder().titulo(titulo).editora(EDITORA).build();
         Livro outroLivro = Livro.builder().titulo(titulo).editora(EDITORA).build();
+        livros.add(livro);
         outrosLivros.add(outroLivro);
         
          assertThat(Acervo.builder().idUsuario(user).livros(livros))
-                .isEqualTo(Acervo.builder().idUsuario(anotherUser).livros(outrosLivros));
+                .isNotEqualTo(Acervo.builder().idUsuario(anotherUser).livros(outrosLivros));
     }
     
      
