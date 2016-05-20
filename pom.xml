@@ -103,6 +103,13 @@
             <version>1.3.3.RELEASE</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>br.edu.ifrn</groupId>
+            <artifactId>devolvame</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 	
     <build>
@@ -179,20 +186,19 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <version>${maven-changelog-plugin.version}</version>
+            </plugin> 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
                 <version>${maven-jxr-plugin.version}</version>
                 <configuration>
                     <aggregate>false</aggregate>
                 </configuration>
-            </plugin>
-            
+            </plugin>       
         </plugins>
-        <!--relatórios de acesso ao repositório de códigos do maven-->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-changelog-plugin</artifactId>
-            <version>${maven-changelog-plugin.version}</version>
-        </plugin> 
+        
     </reporting>
     
     <profiles>        
