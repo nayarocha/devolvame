@@ -28,6 +28,4 @@ public class Livro {
     private Autor autor;
     //Status do livro - emprestado/disponivel
     private int status;
-
-    
 }
