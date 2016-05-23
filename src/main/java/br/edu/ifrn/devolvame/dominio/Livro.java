@@ -1,4 +1,5 @@
 package br.edu.ifrn.devolvame.dominio;
+import java.awt.image.BufferedImage;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -22,7 +23,7 @@ public class Livro {
     private String editora;
     private String idioma;
     private String descricao;
-    private byte[] img;
+    private BufferedImage img;
     private int quant;
     private Categoria categoria;
     private Autor autor;
