@@ -2,6 +2,7 @@ package br.edu.ifrn.devolvame.dominio;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.testng.annotations.Test;
 
@@ -40,6 +41,18 @@ public class CategoriaTests {
     public void nomesDeCategoriasDiferentes(){
         assertThat(Categoria.builder().nomeCategoria(ficcao).build())
                 .isNotEqualTo(Categoria.builder().nomeCategoria(romance).build());
+    }
+    
+    public void compareTo(){
+        Set<Categoria> categorias = new TreeSet<>();
+        
+        Categoria categoria1 = Categoria.builder().nomeCategoria(romance).build();
+        categorias.add(categoria1);
+        Categoria categoria2 = Categoria.builder().nomeCategoria(ficcao).build();
+        categorias.add(categoria2);
+        
+        assertThat(categorias.iterator().next()).isEqualTo(categoria2);
+        
     }
     
 }

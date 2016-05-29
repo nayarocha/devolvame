@@ -15,8 +15,13 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(of = {"nomeCategoria"})
 @Builder
-class Categoria {
+class Categoria implements Comparable<Categoria> {
     private int idCategoria;
     private String nomeCategoria;
     private Set<Livro> livrosDaCategoria; 
+
+    @Override
+    public int compareTo(Categoria o) {
+        return nomeCategoria.compareTo(o.nomeCategoria);
+    }
 }

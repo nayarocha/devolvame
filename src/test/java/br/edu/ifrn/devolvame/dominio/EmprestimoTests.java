@@ -33,8 +33,7 @@ public class EmprestimoTests {
         Emprestimo emprestimoLivro1 = emprestimo(hoje,destinatario_01,dono_01,livro01);
         Emprestimo emprestimoLivro2 = emprestimo (hoje, destinatario_01,dono_01, livro02);
         
-        assertThat(emprestimoLivro1).isNotEqualTo(emprestimoLivro2);
-       
+        assertThat(emprestimoLivro1).isNotEqualTo(emprestimoLivro2);    
     }
     
     
@@ -45,5 +44,7 @@ public class EmprestimoTests {
         
         assertThat(emprestimoLivro1).isNotEqualTo(emprestimoLivro2);
     }
+    
+    
     
 }
