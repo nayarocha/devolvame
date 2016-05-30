@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(of = {"titulo"})
 @Builder
-public class Livro {
+public class Livro implements Comparable<Livro>{
     private int idLivro;
     private String titulo;
     private int isbn;
@@ -29,4 +29,9 @@ public class Livro {
     private Autor autor;
     //Status do livro - emprestado/disponivel
     private int status;
+
+    @Override
+    public int compareTo(Livro o) {
+        return titulo.compareTo(o.titulo);
+    }
 }

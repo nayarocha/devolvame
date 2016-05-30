@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.edu.ifrn.devolvame.dominio;
 
 import java.util.Date;
@@ -21,11 +16,25 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(exclude = {"idEmprestimo"})
 @Builder
-public class Emprestimo {
+public class Emprestimo implements Comparable<Emprestimo>{
     private int idEmprestimo;
     private Usuario donoLivro;
     private Usuario destinatario;
     private Livro livro;
     private Date data;
+
+    @Override
+    public int compareTo(Emprestimo o) {
+        int retorno = data.compareTo(o.data);
+        
+        if(retorno == 0){
+            retorno = livro.compareTo(o.livro);
+        }
+        if(retorno == 0){
+            retorno = donoLivro.compareTo(o.donoLivro);
+        }
+        return retorno;
+        
+    }
     
 }

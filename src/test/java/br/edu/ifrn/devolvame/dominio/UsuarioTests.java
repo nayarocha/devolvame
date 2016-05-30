@@ -31,9 +31,9 @@ public class UsuarioTests {
     public void compareTo(){
         Set<Usuario> usuarios = new TreeSet<>();
         
-        Usuario user2 = Usuario.builder().nome(NOME2).build();
+        Usuario user2 = Usuario.builder().email(OUTRO_EMAIL).build();
         usuarios.add(user2);
-        Usuario user1 = Usuario.builder().nome(NOME1).build();
+        Usuario user1 = Usuario.builder().email(EMAIL).build();
         usuarios.add(user1);
         
         assertThat(usuarios.iterator().next()).isEqualTo(user1);

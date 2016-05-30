@@ -29,7 +29,7 @@ public class Usuario implements /*Serializable,*/ Comparable<Usuario>{
     
     @Override
     public int compareTo(Usuario o) {
-        return nome.compareTo(o.nome);//To change body of generated methods, choose Tools | Templates.
+        return email.compareTo(o.email);
     }
       
    
