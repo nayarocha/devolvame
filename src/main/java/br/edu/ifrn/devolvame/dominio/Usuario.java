@@ -34,18 +34,22 @@ public class Usuario implements Serializable, Comparable<Usuario>{
     @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "ID_SEQUENCE")
     private Long id;
     
-    private int idUsuario;
     @Column(nullable = false)
     private String nome;
+    
     @Column(nullable = false)
     private String email;
+    
     @Column(nullable = false)
     private String senha;
+    
     private int telefone;
     private BufferedImage img;
-    @OneToOne(mappedBy = "usuario")
+    
+    @OneToOne(mappedBy = "emprestimo")
     private Acervo acervo; 
-    @OneToMany(mappedBy = "usuario")
+    
+    @OneToMany(mappedBy = "emprestimo")
     private Set<Emprestimo> listagemEmprestimo; 
     
     @Override

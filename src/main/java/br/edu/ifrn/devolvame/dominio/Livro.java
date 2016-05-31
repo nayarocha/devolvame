@@ -34,17 +34,22 @@ public class Livro implements Serializable, Comparable<Livro>{
     private Long id;
     
     private int idLivro;
+    
     @Column(nullable = false)
     private String titulo;
+    
     @Column(nullable = false)
     private int isbn;
+    
     private String editora;
     private String idioma;
     private String descricao;
     private BufferedImage img;
     private int quant;
+    
     @OneToOne(mappedBy = "livro")
     private Categoria categoria;
+    
     private Autor autor;
     //Status do livro - emprestado/disponivel
     @Column(nullable = false)
