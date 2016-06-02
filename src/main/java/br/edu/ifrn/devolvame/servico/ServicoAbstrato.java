@@ -3,13 +3,12 @@ package br.edu.ifrn.devolvame.servico;
 import br.edu.ifrn.devolvame.persistencia.Repositorio;
 import java.io.Serializable;
 import java.util.Iterator;
-import javax.inject.Inject;
+
 
 public class ServicoAbstrato<ID extends Serializable, O, R extends Repositorio<ID, O>> implements Servico<ID, O>{
     
     private R repositorio;
-    
-    @Inject
+
     public ServicoAbstrato(R repositorio){
         this.repositorio = repositorio;
     }
