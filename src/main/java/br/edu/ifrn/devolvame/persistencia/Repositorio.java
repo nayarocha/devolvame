@@ -3,13 +3,13 @@ package br.edu.ifrn.devolvame.persistencia;
 import java.io.Serializable;
 import java.util.Iterator;
 
-public interface Repositorio<O, ID extends Serializable> {
-    void create(O object);
+public interface Repositorio<ID extends Serializable, O> {
+    void create(ID id, O object);
     O retrieve(ID id);
     
-    void update(O object);
+    void update(ID id, O object);
     
-    void delete(O object);
+    void delete(ID id);
     
     Iterator<O> Iterator();
 }
