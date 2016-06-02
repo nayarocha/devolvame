@@ -1,12 +1,9 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Emprestimo;
-import java.util.Iterator;
+import javax.inject.Named;
 
-public interface EmprestimoRepositorio {
-    void save(Emprestimo objeto);
-
-    void delete(Emprestimo objeto);
+@Named
+public class EmprestimoRepositorio extends RepositorioMemoria<Long, Emprestimo>{
     
-    Iterator<Emprestimo> iterator();    
 }

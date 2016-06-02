@@ -1,13 +1,9 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Livro;
-import java.util.Iterator;
+import javax.inject.Named;
 
-public interface LivroRepositorio {
- 
-    void save(Livro objeto);
+@Named
+public class LivroRepositorio extends RepositorioMemoria<Long, Livro>{
 
-    void delete(Livro objeto);
-    
-    Iterator<Livro> iterator();
 }

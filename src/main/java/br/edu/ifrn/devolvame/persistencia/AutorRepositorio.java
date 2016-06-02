@@ -1,14 +1,9 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Autor;
-import java.util.Iterator;
+import javax.inject.Named;
 
-public interface AutorRepositorio {
-    
-    void save(Autor objeto);
-
-    void delete(Autor objeto);
-    
-    Iterator<Autor> iterator();
+@Named
+public class AutorRepositorio extends RepositorioMemoria<Long, Autor> {
     
 }
