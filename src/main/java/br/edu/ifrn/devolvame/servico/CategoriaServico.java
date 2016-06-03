@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-public class CategoriaServico extends ServicoAbstrato<Long, Categoria, CategoriaRepositorio>{
+public class CategoriaServico extends ServicoAbstrato<Categoria>{
     
     @Inject
     public CategoriaServico(CategoriaRepositorio repositorio){

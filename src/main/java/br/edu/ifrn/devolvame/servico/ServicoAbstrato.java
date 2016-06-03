@@ -1,42 +1,28 @@
 package br.edu.ifrn.devolvame.servico;
 
 import br.edu.ifrn.devolvame.persistencia.Repositorio;
-import java.io.Serializable;
 import java.util.Iterator;
 
-
-public class ServicoAbstrato<ID extends Serializable, O, R extends Repositorio<ID, O>> implements Servico<ID, O>{
+public abstract class ServicoAbstrato<O> implements Servico<O>{
     
-    private R repositorio;
+    private Repositorio<O> repositorio;
 
-    public ServicoAbstrato(R repositorio){
+    public ServicoAbstrato(Repositorio<O> repositorio){
         this.repositorio = repositorio;
     }
     
     @Override
-    public void create(ID id, O object) {
-        repositorio.create(id, object);
+    public void save(O object){
+        repositorio.save(object);
     }
 
     @Override
-    public O retrieve(ID id) {
-        return repositorio.retrieve(id);
+    public void delete(O object){
+        repositorio.delete(object);
     }
 
     @Override
-    public void update(ID id, O object) {
-        repositorio.update(id, object);
+    public Iterator<O> iterator(){
+        return repositorio.iterator();
     }
-
-    @Override
-    public void delete(ID id) {
-        repositorio.delete(id);
-    }
-
-    @Override
-    public Iterator<O> iterator() {
-        return null;
-    }
-   
-    
 }

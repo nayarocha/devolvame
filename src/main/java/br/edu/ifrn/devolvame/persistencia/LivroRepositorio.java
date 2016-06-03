@@ -4,6 +4,6 @@ import br.edu.ifrn.devolvame.dominio.Livro;
 import javax.inject.Named;
 
 @Named
-public class LivroRepositorio extends RepositorioMemoria<Long, Livro>{
+public class LivroRepositorio extends RepositorioMemoria<Livro>{
 
 }

@@ -1,51 +1,26 @@
 package br.edu.ifrn.devolvame.persistencia;
 
-import java.io.Serializable;
-import java.util.HashMap;
+
 import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.TreeSet;
 
-public class RepositorioMemoria<ID extends Serializable,O> implements Repositorio<ID, O>{
+public abstract class RepositorioMemoria<O> implements Repositorio<O> {
     
-    private HashMap<ID, O> container = new HashMap<>();
-    
+    private Set<O> container = new TreeSet<>();
+
     @Override
-    public void create(ID id, O object){
-        if (this.containsObject(id)){
-            throw new IllegalArgumentException();
-        }
-        container.put(id, object);
-    }
-    
-    @Override
-    public O retrieve(ID id){
-        return container.get(id);
-    }
-    
-    @Override
-    public void update(ID id, O object){
-        if(!this.containsObject(id)){
-            throw new NoSuchElementException();
-        }
-        container.put(id, object);
-    }
-    
-    @Override
-    public void delete(ID id){
-        if (!this.containsObject(id)){
-            throw new NoSuchElementException();
-        }
-        container.remove(id);
-    }
-    
-    @Override
-    public Iterator<O> Iterator() {
-        return null;
-    }
-    
-    private boolean containsObject(ID id){
-        return container.containsKey(id);
+    public void save(O object) {
+        container.add(object);
     }
 
-   
+    @Override
+    public void delete(O object) {
+        container.remove(object);
+    }
+
+    @Override
+    public Iterator<O> iterator(){
+        return container.iterator();
+    }
 }

@@ -4,6 +4,6 @@ import br.edu.ifrn.devolvame.dominio.Emprestimo;
 import javax.inject.Named;
 
 @Named
-public class EmprestimoRepositorio extends RepositorioMemoria<Long, Emprestimo>{
+public class EmprestimoRepositorio extends RepositorioMemoria<Emprestimo>{
     
 }
