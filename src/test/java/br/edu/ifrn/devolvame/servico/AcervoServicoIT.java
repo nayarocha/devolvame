@@ -25,7 +25,7 @@ public class AcervoServicoIT extends AbstractTestNGSpringContextTests {
     public void save () {
         Acervo acervo = Acervo.builder()
                .descricao("Minha biblioteca pessoal")
-               .idUsuario(Usuario.builder().id(0l).build())
+               .usuario(Usuario.builder().id(0l).build())
                .build();
         
         acervoServico.save(acervo);
@@ -36,7 +36,7 @@ public class AcervoServicoIT extends AbstractTestNGSpringContextTests {
     public void delete () {
         Acervo acervo = Acervo.builder()
                .descricao("Minha biblioteca pessoal")
-               .idUsuario(Usuario.builder().id(0l).build())
+               .usuario(Usuario.builder().id(0l).build())
                .build();
        
         acervoServico.save(acervo);
