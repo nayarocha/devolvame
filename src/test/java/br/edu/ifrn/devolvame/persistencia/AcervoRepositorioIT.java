@@ -15,9 +15,7 @@ import org.testng.annotations.Test;
 public class AcervoRepositorioIT extends AbstractTestNGSpringContextTests{
     @Inject 
     private AcervoRepositorio acervoRepositorio;
-    
-
-    
+      
     public void isNotNull () {
         assertThat(acervoRepositorio).isNotNull();
     }
