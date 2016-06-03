@@ -35,5 +35,6 @@ public class Acervo implements Serializable{
     @OneToOne
     private Usuario idUsuario;
     private Set<Livro> livros;
+    private String descricao;
     
 }
