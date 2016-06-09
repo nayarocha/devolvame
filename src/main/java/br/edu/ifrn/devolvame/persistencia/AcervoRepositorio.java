@@ -1,9 +1,8 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Acervo;
-import javax.inject.Named;
+import org.springframework.data.repository.CrudRepository;
 
-@Named
-public class AcervoRepositorio extends RepositorioMemoria<Acervo> {
-    
+public interface AcervoRepositorio extends CrudRepository<Acervo, Long> {
+
 }

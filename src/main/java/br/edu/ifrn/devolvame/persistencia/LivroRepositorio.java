@@ -1,9 +1,10 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Livro;
-import javax.inject.Named;
+import org.springframework.data.repository.CrudRepository;
 
-@Named
-public class LivroRepositorio extends RepositorioMemoria<Livro>{
+public interface LivroRepositorio extends CrudRepository<Livro, Long> {
 
 }
+
+

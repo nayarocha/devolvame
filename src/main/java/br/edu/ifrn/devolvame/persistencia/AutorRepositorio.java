@@ -1,9 +1,8 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Autor;
-import javax.inject.Named;
+import org.springframework.data.repository.CrudRepository;
 
-@Named
-public class AutorRepositorio extends RepositorioMemoria<Autor> {
-    
+public interface AutorRepositorio extends CrudRepository<Autor, Long> {
+
 }

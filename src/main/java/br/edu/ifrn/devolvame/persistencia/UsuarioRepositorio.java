@@ -1,9 +1,8 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Usuario;
-import javax.inject.Named;
+import org.springframework.data.repository.CrudRepository;
 
-@Named
-public class UsuarioRepositorio extends RepositorioMemoria<Usuario>{
-    
+public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> {
+
 }

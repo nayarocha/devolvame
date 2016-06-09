@@ -1,9 +1,9 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Categoria;
-import javax.inject.Named;
+import org.springframework.data.repository.CrudRepository;
 
-@Named
-public class CategoriaRepositorio extends RepositorioMemoria<Categoria>{
-   
+
+public interface CategoriaRepositorio extends CrudRepository<Categoria, Long> {
+
 }
