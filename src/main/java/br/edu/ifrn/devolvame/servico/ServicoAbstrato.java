@@ -1,15 +1,15 @@
 package br.edu.ifrn.devolvame.servico;
 
-import br.edu.ifrn.devolvame.persistencia.CrudRepositorio;
+import org.springframework.data.repository.CrudRepository;
 import java.io.Serializable;
 import javax.inject.Inject;
 
 public abstract class ServicoAbstrato<O extends Object, ID extends Serializable> {
     
-    private CrudRepositorio<O, ID> repositorio;
+    private CrudRepository<O, ID> repositorio;
 
     @Inject
-    public void setRepositorio(CrudRepositorio<O, ID> repositorio) {
+    public void setRepository(CrudRepository<O, ID> repositorio) {
          this.repositorio = repositorio;
      }
  
