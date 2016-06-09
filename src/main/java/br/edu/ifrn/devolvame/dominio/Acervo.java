@@ -27,7 +27,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @SequenceGenerator(sequenceName = "seq_acervo", name = "ID_SEQUENCE", allocationSize = 1)
-public class Acervo implements Serializable{
+public class Acervo implements Comparable<Acervo>, Serializable{
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,6 +39,20 @@ public class Acervo implements Serializable{
     
     @OneToMany
     private Set<Livro> livros;
+    
     private String descricao;
+
+    
+    @Override
+    public int compareTo(Acervo a) {
+        int compare = 0;
+        
+        if (a.livros.size() == this.livros.size()) 
+            return 0;
+        
+        return (this.livros.size() > a.livros.size()) ? 1 : -1;
+    }
     
 }
+
+
