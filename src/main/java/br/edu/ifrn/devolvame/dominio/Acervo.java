@@ -45,12 +45,11 @@ public class Acervo implements Comparable<Acervo>, Serializable{
     
     @Override
     public int compareTo(Acervo a) {
-        int compare = 0;
         
-        if (a.livros.size() == this.livros.size()) 
+        if (this.getLivros().size() == a.getLivros().size())
             return 0;
-        
-        return (this.livros.size() > a.livros.size()) ? 1 : -1;
+        else
+            return (this.getLivros().size() > a.getLivros().size()) ? 1 : -1;
     }
     
 }
