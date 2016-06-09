@@ -33,8 +33,8 @@ public class AcervoTests {
         livros.add(livro);
         outrosLivros.add(livro);
         
-        assertThat(Acervo.builder().idUsuario(user).livros(livros))
-                .isNotEqualTo(Acervo.builder().idUsuario(anotherUser).livros(livros));
+        assertThat(Acervo.builder().usuario(user).livros(livros))
+                .isNotEqualTo(Acervo.builder().usuario(anotherUser).livros(livros));
     }
     
     public void acervosSaoDiferentes(){
@@ -43,8 +43,8 @@ public class AcervoTests {
         livros.add(livro);
         outrosLivros.add(outroLivro);
         
-         assertThat(Acervo.builder().idUsuario(user).livros(livros))
-                .isNotEqualTo(Acervo.builder().idUsuario(anotherUser).livros(outrosLivros));
+         assertThat(Acervo.builder().usuario(user).livros(livros))
+                .isNotEqualTo(Acervo.builder().usuario(anotherUser).livros(outrosLivros));
     }
     
      

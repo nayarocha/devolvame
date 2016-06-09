@@ -1,4 +1,5 @@
 package br.edu.ifrn.devolvame.dominio;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;

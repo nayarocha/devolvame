@@ -1,12 +1,12 @@
 package br.edu.ifrn.devolvame.dominio;
-import java.awt.image.BufferedImage;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -44,10 +44,10 @@ public class Livro implements Serializable, Comparable<Livro>{
     private String editora;
     private String idioma;
     private String descricao;
-    private BufferedImage img;
+    private byte[] img;
     private int quant;
     
-    @OneToOne(mappedBy = "livro")
+    @ManyToOne
     private Categoria categoria;
     
     private Autor autor;

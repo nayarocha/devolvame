@@ -1,10 +1,12 @@
 package br.edu.ifrn.devolvame.dominio;
+
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import lombok.Builder;
@@ -33,7 +35,9 @@ public class Acervo implements Serializable{
     private Long id;
     
     @OneToOne
-    private Usuario idUsuario;
+    private Usuario usuario;
+    
+    @OneToMany
     private Set<Livro> livros;
     private String descricao;
     

@@ -1,5 +1,5 @@
 package br.edu.ifrn.devolvame.dominio;
-import java.awt.image.BufferedImage;
+
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
@@ -44,12 +44,12 @@ public class Usuario implements Serializable, Comparable<Usuario>{
     private String senha;
     
     private int telefone;
-    private BufferedImage img;
+    private byte[] img;
     
-    @OneToOne(mappedBy = "emprestimo")
+    @OneToOne(mappedBy = "usuario")
     private Acervo acervo; 
     
-    @OneToMany(mappedBy = "emprestimo")
+    @OneToMany(mappedBy = "donoLivro")
     private Set<Emprestimo> listagemEmprestimo; 
     
     @Override
