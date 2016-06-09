@@ -1,28 +1,40 @@
 package br.edu.ifrn.devolvame.servico;
 
-import br.edu.ifrn.devolvame.persistencia.Repositorio;
-import java.util.Iterator;
+import br.edu.ifrn.devolvame.persistencia.CrudRepositorio;
+import java.io.Serializable;
+import javax.inject.Inject;
 
-public abstract class ServicoAbstrato<O> implements Servico<O>{
+public abstract class ServicoAbstrato<O extends Object, ID extends Serializable> {
     
-    private Repositorio<O> repositorio;
+    private CrudRepositorio<O, ID> repositorio;
 
-    public ServicoAbstrato(Repositorio<O> repositorio){
-        this.repositorio = repositorio;
+    @Inject
+    public void setRepositorio(CrudRepositorio<O, ID> repositorio) {
+         this.repositorio = repositorio;
+     }
+ 
+    public void save(O objeto) {
+        // realizar verificacoes de negocio
+                
+        // delega a persistencia para o repositorio
+        repositorio.save(objeto);
     }
     
-    @Override
-    public void save(O object){
-        repositorio.save(object);
+    public void delete(O objeto) {
+        // realizar verificacoes de negocio
+                
+        // delega a persistencia para o repositorio
+        repositorio.delete(objeto);
     }
-
-    @Override
-    public void delete(O object){
-        repositorio.delete(object);
+    
+    public Iterable<O> findAll() {
+        return repositorio.findAll();
     }
-
-    @Override
-    public Iterator<O> iterator(){
-        return repositorio.iterator();
+    
+    public void deleteAll() {
+        // realizar verificacoes de negocio
+                
+        // delega a persistencia para o repositorio
+        repositorio.deleteAll();
     }
 }

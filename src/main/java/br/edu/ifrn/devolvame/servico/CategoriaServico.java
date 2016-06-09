@@ -1,15 +1,8 @@
 package br.edu.ifrn.devolvame.servico;
 
 import br.edu.ifrn.devolvame.dominio.Categoria;
-import br.edu.ifrn.devolvame.persistencia.CategoriaRepositorio;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-public class CategoriaServico extends ServicoAbstrato<Categoria>{
-    
-    @Inject
-    public CategoriaServico(CategoriaRepositorio repositorio){
-        super(repositorio);
-    }
+public class CategoriaServico extends ServicoAbstrato<Categoria, Long>{
 }
