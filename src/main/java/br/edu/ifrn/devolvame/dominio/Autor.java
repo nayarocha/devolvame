@@ -7,9 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -24,6 +27,8 @@ import lombok.ToString;
 @EqualsAndHashCode(of="autor")
 @Builder
 @Entity
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SequenceGenerator(sequenceName = "seq_autor", name = "ID_SEQUENCE", allocationSize = 1)
 public class Autor implements Comparable<Autor>, Serializable {
     

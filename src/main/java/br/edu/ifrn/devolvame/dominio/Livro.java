@@ -9,9 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -25,6 +27,8 @@ import lombok.ToString;
 @EqualsAndHashCode(of = {"titulo"})
 @Builder
 @Entity
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SequenceGenerator(sequenceName = "seq_usuario", name = "ID_SEQUENCE", allocationSize = 1)
 public class Livro implements Serializable, Comparable<Livro>{
     
@@ -54,6 +58,7 @@ public class Livro implements Serializable, Comparable<Livro>{
     //Status do livro - emprestado/disponivel
     @Column(nullable = false)
     private int status;
+
 
     @Override
     public int compareTo(Livro o) {

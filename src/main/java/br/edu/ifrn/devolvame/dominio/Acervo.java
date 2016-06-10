@@ -3,15 +3,19 @@ package br.edu.ifrn.devolvame.dominio;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -26,6 +30,8 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "livros")
 @Builder
 @Entity
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SequenceGenerator(sequenceName = "seq_acervo", name = "ID_SEQUENCE", allocationSize = 1)
 public class Acervo implements Comparable<Acervo>, Serializable{
     
@@ -37,20 +43,10 @@ public class Acervo implements Comparable<Acervo>, Serializable{
     @OneToOne
     private Usuario usuario;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Livro> livros;
     
     private String descricao;
-
-    public Acervo() {
-    }
-    
-    private Acervo(Long id, Usuario user, Set<Livro> livros, String desc){
-        this.id = id;
-        this.usuario = user;
-        this.livros = livros;
-        this.descricao = desc;
-    }
 
     
     @Override

@@ -33,11 +33,11 @@ public class AcervoRepositorioIT extends AbstractTestNGSpringContextTests{
     }
     
     public void save(){
-        Acervo acervo = Acervo.builder().descricao("Minha biblioteca pessoal").build();
+        Acervo acervo = dominioFactory.acervo();
         
-        acervoRepositorio.save(acervo);
+        Acervo primeiroItem = acervoRepositorio.findAll().iterator().next();
         
-        assertThat(acervoRepositorio.findAll().iterator().next()).isEqualTo(acervo);
+        assertThat(primeiroItem).isEqualTo(acervo);
     }
     
     

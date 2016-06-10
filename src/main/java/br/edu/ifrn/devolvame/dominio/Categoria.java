@@ -9,9 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -25,6 +28,8 @@ import lombok.ToString;
 @EqualsAndHashCode(of = {"nomeCategoria"})
 @Builder
 @Entity
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SequenceGenerator(sequenceName = "seq_categoria", name = "ID_SEQUENCE", allocationSize = 1)
 public class Categoria implements Comparable<Categoria>, Serializable {
     private static final long serialVersionUID = 1L;
@@ -38,14 +43,6 @@ public class Categoria implements Comparable<Categoria>, Serializable {
     @OneToMany(mappedBy =  "categoria")
     private Set<Livro> livrosDaCategoria; 
 
-    public Categoria() {
-    }
-    
-    private Categoria(Long id, String nome, Set<Livro> livros){
-        this.id = id;
-        this.nomeCategoria = nome;
-        this.livrosDaCategoria = livros;
-    }
 
     @Override
     public int compareTo(Categoria o) {

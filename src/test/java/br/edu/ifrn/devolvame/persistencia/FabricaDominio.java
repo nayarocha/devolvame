@@ -47,8 +47,14 @@ public class FabricaDominio {
     }
     
     public Acervo acervo(){
-        Acervo acrv = Acervo.builder().descricao(DESCRICAO_ACERVO).build();
+        
+        Set<Livro> livros = new TreeSet<>();
+        Livro umLivro = this.jogosVorazes();
+        livros.add(umLivro);
+        
+        Acervo acrv = Acervo.builder().descricao(DESCRICAO_ACERVO).livros(livros).build();
         acervoRepositorio.save(acrv);
+        
         return acrv;
     }
     
