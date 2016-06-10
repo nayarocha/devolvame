@@ -1,8 +1,11 @@
 package br.edu.ifrn.devolvame.persistencia;
 
+import br.edu.ifrn.devolvame.dominio.Acervo;
 import br.edu.ifrn.devolvame.dominio.Categoria;
 import br.edu.ifrn.devolvame.dominio.Livro;
 import br.edu.ifrn.devolvame.dominio.Usuario;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,6 +18,7 @@ public class FabricaDominio {
     public final static String LIVRO2 = "Steve jobs";
     public final static String CATEGORIA1 = "biografia";
     public final static String CATEGORIA2 = "ficção";
+    public final static String DESCRICAO_ACERVO = "Livros sobre a vida na selva";
     
     
     @Inject
@@ -40,6 +44,12 @@ public class FabricaDominio {
         Usuario user1 = Usuario.builder().email(USER1).build();
         usuarioRepositorio.save(user1);
         return user1;
+    }
+    
+    public Acervo acervo(){
+        Acervo acrv = Acervo.builder().descricao(DESCRICAO_ACERVO).build();
+        acervoRepositorio.save(acrv);
+        return acrv;
     }
     
     
