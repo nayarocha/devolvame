@@ -2,38 +2,47 @@ package br.edu.ifrn.devolvame.servico;
 
 import br.edu.ifrn.devolvame.DevolvameApplication;
 import br.edu.ifrn.devolvame.dominio.Categoria;
+import br.edu.ifrn.devolvame.persistencia.CategoriaFabrica;
 import javax.inject.Inject;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
-@Test
-public class CategoriaServicoIT extends AbstractTestNGSpringContextTests {
+@Test(groups = "categoria")
+public class CategoriaServicoIT extends AbstractTestNGSpringContextTests{
+    @Inject 
+    CategoriaServico categoriaServico; 
     
-    @Inject
-    private CategoriaServico categoriaServico;
+    @BeforeMethod
+    void deletarTodos(){
+        categoriaServico.deleteAll();
+        assertThat(categoriaServico.findAll()).isEmpty();
+    }
     
-    public void repositorioIsNotNull () {
+    public void repositorioNaoEhNulo(){
         assertThat(categoriaServico).isNotNull();
     }
     
-    public void save () {
-        Categoria categoria = Categoria.builder().nomeCategoria("biografia").build();
-        categoriaServico.save(categoria);
+    public void salvarUm(){
+        Categoria categoria = Categoria.builder().nomeCategoria(CategoriaFabrica.BIOGRAFIA).build();
         
-        assertThat(categoriaServico.iterator().next()).isEqualTo(categoria);
+        categoriaServico.save(categoria);
+    
+        assertThat(categoriaServico.findAll().iterator().next()).isEqualTo(categoria);
     }
     
-    public void delete () {
-       Categoria categoria = Categoria.builder().nomeCategoria("biografia").build();
-       categoriaServico.save(categoria);
+    public void deletarUm(){
+       
+       Categoria categoria = Categoria.builder().nomeCategoria(CategoriaFabrica.BIOGRAFIA).build();
         
        categoriaServico.delete(categoria);
-        
-       assertThat(categoriaServico.iterator().hasNext()).isFalse();
+       
+       assertThat(categoriaServico.findAll().iterator().hasNext()).isFalse();
     }
+    
 }

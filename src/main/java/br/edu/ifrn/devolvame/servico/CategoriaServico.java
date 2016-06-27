@@ -4,5 +4,6 @@ import br.edu.ifrn.devolvame.dominio.Categoria;
 import javax.inject.Named;
 
 @Named
-public class CategoriaServico extends ServicoAbstrato<Categoria, Long>{
+public class CategoriaServico extends CrudServico <Categoria, Long>{
+    
 }

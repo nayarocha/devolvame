@@ -7,34 +7,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
-@Test
+@Test(groups = "categoria")
 public class CategoriaRepositorioIT extends AbstractTestNGSpringContextTests{
-    @Inject 
+    @Inject
     private CategoriaRepositorio categoriaRepositorio;
     
+    @Inject
+    private CategoriaFabrica categoriaFabrica;
     
-    public void isNotNull () {
+    @BeforeMethod
+    void deletarTodos(){
+        categoriaRepositorio.deleteAll();
+        assertThat(categoriaRepositorio.findAll()).isEmpty();
+    }
+    
+    public void repositorioNaoEhNulo(){
         assertThat(categoriaRepositorio).isNotNull();
     }
     
-    public void save(){
-        Categoria categoria = Categoria.builder().nomeCategoria("biografia").build();
-        categoriaRepositorio.save(categoria);
-        
-        assertThat(categoriaRepositorio.iterator().hasNext()).isEqualTo(categoria);
+    public void deletarUm(){
+       Categoria categoria = categoriaFabrica.biografia();
+       
+       categoriaRepositorio.delete(categoria);
+       
+        assertThat(categoriaRepositorio.findOne(categoria.getId())).isNull();
     }
     
-    
-    public void delete(){
-        Categoria categoria = Categoria.builder().nomeCategoria("biografia").build();
+    public void salvarUm(){
+        Categoria categoria = Categoria.builder().nomeCategoria(CategoriaFabrica.BIOGRAFIA).build();
+        
         categoriaRepositorio.save(categoria);
-        
-        categoriaRepositorio.delete(categoria);
-        
-        assertThat(categoriaRepositorio.iterator().hasNext()).isFalse();
+    
+        assertThat(categoriaRepositorio.findAll().iterator().next()).isEqualTo(categoria);
     }
 }
