@@ -9,9 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -19,21 +21,23 @@ import lombok.ToString;
  *
  * @author nayarocha
  */
-@Getter(AccessLevel.NONE)
-@Setter(AccessLevel.NONE)
+@Getter
+@Setter
 @ToString
 @EqualsAndHashCode(of = {"titulo"})
 @Builder
 @Entity
 @SequenceGenerator(sequenceName = "seq_usuario", name = "ID_SEQUENCE", allocationSize = 1)
-public class Livro implements Serializable, Comparable<Livro>{
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+public class Livro implements Comparable<Livro>, Serializable{
     
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "ID_SEQUENCE")
     private Long id;
     
-    private int idLivro;
+    //private int idLivro;
     
     @Column(nullable = false)
     private String titulo;
@@ -42,10 +46,10 @@ public class Livro implements Serializable, Comparable<Livro>{
     private int isbn;
     
     private String editora;
-    private String idioma;
+    //private String idioma;
     private String descricao;
-    private byte[] img;
-    private int quant;
+    //private byte[] img;
+    //private int quant;
     
     @ManyToOne
     private Categoria categoria;
