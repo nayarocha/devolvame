@@ -43,14 +43,6 @@ public class Categoria implements Comparable<Categoria>, Serializable {
     @OneToMany(mappedBy =  "categoria")
     private Set<Livro> livrosDaCategoria; 
 
-    public Categoria() {
-    }
-    
-    private Categoria(Long id, String nome, Set<Livro> livros){
-        this.id = id;
-        this.nomeCategoria = nome;
-        this.livrosDaCategoria = livros;
-    }
 
     @Override
     public int compareTo(Categoria o) {
