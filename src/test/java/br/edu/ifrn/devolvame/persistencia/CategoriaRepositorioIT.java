@@ -14,41 +14,35 @@ import org.testng.annotations.Test;
 @WebAppConfiguration
 @Test(groups = "categoria")
 public class CategoriaRepositorioIT extends AbstractTestNGSpringContextTests{
-    
-    @Inject 
+    @Inject
     private CategoriaRepositorio categoriaRepositorio;
     
     @Inject
-    private FabricaDominio dominioFactory;
+    private CategoriaFabrica categoriaFabrica;
     
     @BeforeMethod
-    void deletarTodos()
-    {
+    void deletarTodos(){
         categoriaRepositorio.deleteAll();
         assertThat(categoriaRepositorio.findAll()).isEmpty();
     }
     
-
-    public void isNotNull () {
+    public void repositorioNaoEhNulo(){
         assertThat(categoriaRepositorio).isNotNull();
     }
     
-    public void save(){
-        Categoria categoria = Categoria.builder().nomeCategoria("biografia").build();
-        
-        // executa a operacao a ser testada
-        categoriaRepositorio.save(categoria);
-        
-        assertThat(categoriaRepositorio.findAll().iterator().next()).isEqualTo(categoria);
+    public void deletarUm(){
+       Categoria categoria = categoriaFabrica.biografia();
+       
+       categoriaRepositorio.delete(categoria);
+       
+        assertThat(categoriaRepositorio.findOne(categoria.getId())).isNull();
     }
     
+    public void salvarUm(){
+        Categoria categoria = Categoria.builder().nomeCategoria(CategoriaFabrica.BIOGRAFIA).build();
+        
+        categoriaRepositorio.save(categoria);
     
-    public void delete(){
-        Categoria categoria = dominioFactory.ficcao();
-        
-        // executa a operacao a ser testada
-        categoriaRepositorio.delete(categoria);
-        
-        assertThat(categoriaRepositorio.findOne(categoria.getId())).isNull();
+        assertThat(categoriaRepositorio.findAll().iterator().next()).isEqualTo(categoria);
     }
 }

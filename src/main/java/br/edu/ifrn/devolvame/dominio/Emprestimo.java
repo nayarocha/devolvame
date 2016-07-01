@@ -22,7 +22,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(exclude = {"idEmprestimo"})
+@EqualsAndHashCode(exclude = {"id"})
 @Builder
 @Entity
 @SequenceGenerator(sequenceName = "seq_emprestimo", name = "ID_SEQUENCE", allocationSize = 1)
@@ -32,7 +32,7 @@ public class Emprestimo implements Serializable, Comparable<Emprestimo>{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_SEQUENCE")
     private Long id;
 
-    private int idEmprestimo;
+    //private int idEmprestimo;
     
     @ManyToOne
     @JoinColumn(nullable = false)

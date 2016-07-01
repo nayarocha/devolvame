@@ -3,46 +3,81 @@ package br.edu.ifrn.devolvame.servico;
 import br.edu.ifrn.devolvame.DevolvameApplication;
 import br.edu.ifrn.devolvame.dominio.Categoria;
 import br.edu.ifrn.devolvame.dominio.Livro;
+import br.edu.ifrn.devolvame.persistencia.CategoriaFabrica;
+import br.edu.ifrn.devolvame.persistencia.LivroFabrica;
+import static br.edu.ifrn.devolvame.persistencia.LivroFabrica.DISPONIVEL;
+import static br.edu.ifrn.devolvame.persistencia.LivroFabrica.EMPRESTADO;
+import static br.edu.ifrn.devolvame.persistencia.LivroFabrica.JOGOSVORAZES;
+import static br.edu.ifrn.devolvame.persistencia.LivroFabrica.STEVEJOBS;
+import br.edu.ifrn.devolvame.persistencia.LivroRepositorio;
 import javax.inject.Inject;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
-@Test
-public class LivroServicoIT extends AbstractTestNGSpringContextTests {
+@Test(groups = "livro")
+public class LivroServicoIT extends AbstractTestNGSpringContextTests{
     
     @Inject
-    private LivroServico livroServico;
+    private LivroRepositorio livroRepositorio;
+
+    @Inject
+    private LivroFabrica livroFabrica;
+
+    @Inject
+    private CategoriaFabrica categoriaFabrica;
     
-    public void repositorioIsNotNull () {
-        assertThat(livroServico).isNotNull();
+    
+    @BeforeMethod
+    void deletarTodos() {
+        livroRepositorio.deleteAll();
+        
+        assertThat(livroRepositorio.findAll()).isEmpty();
     }
     
-    public void save () {
-        Livro livro = Livro.builder()
-                .titulo("HarryPotter")
-                .categoria(Categoria.builder().nomeCategoria("Aventura").build())
-                .build();
+     public void verificaPorStatus(){
+        int disponivel  = livroFabrica.disponivel();
+        int emprestado  = livroFabrica.emprestado();
         
-        livroServico.save(livro);
-        
-        assertThat(livroServico.iterator().next()).isEqualTo(livro);
+        assertThat(livroRepositorio.findByStatus(disponivel)).isNotEqualTo(emprestado);   
     }
     
-    public void delete () {
-        Livro livro = Livro.builder()
-                .titulo("HarryPotter")
-                .categoria(Categoria.builder().nomeCategoria("Aventura").build())
-                .build();
+    //verifica livros de id's e status diferentes
+    public void tituloIguais() {
+        Categoria categoria = categoriaFabrica.biografia();
+        Livro livro = livroFabrica.livro(0L ,STEVEJOBS, 1334, "editora Teste", "historia do steve", categoria, DISPONIVEL);        
+        
+        assertThat(livroFabrica.livro(1L, STEVEJOBS, 1334, "editora Teste", "historia do steve", categoria, EMPRESTADO)).isEqualTo(livro);
+    }
+    
+    public void findByTitulo(){
+        Livro steveJobs = livroFabrica.steveJobs();
+        Livro jogosVorazes = livroFabrica.jogosVorazes();
+        
+        assertThat(livroRepositorio.findByTitulo(STEVEJOBS)).isEqualTo(steveJobs);
+        assertThat(livroRepositorio.findByTitulo(JOGOSVORAZES)).isEqualTo(jogosVorazes);
+    }
+    
+    
+   public void salvarLivro(){
+      Categoria categoria = categoriaFabrica.biografia();
+      Livro livro = livroFabrica.livro("Steve jobs", 1334, "editora Teste", "historia do steve", categoria, 0);  
+      livroRepositorio.save(livro);
+      
+      assertThat(livroRepositorio.findAll().iterator().next()).isEqualTo(livro);
+    }
+   
+   
+   public void deletarLivro(){
+       Livro livro = livroFabrica.steveJobs();
+       livroRepositorio.delete(livro);
        
-       livroServico.save(livro);
-        
-       livroServico.delete(livro);
-        
-       assertThat(livroServico.iterator().hasNext()).isFalse();
-    }
+       assertThat(livroRepositorio.findOne(livro.getId())).isNull();
+   }
+
 }
