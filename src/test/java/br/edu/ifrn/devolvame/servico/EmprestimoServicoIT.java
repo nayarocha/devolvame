@@ -11,4 +11,6 @@ import org.testng.annotations.Test;
 @Test(groups = "emprestimo")
 public class EmprestimoServicoIT extends AbstractTestNGSpringContextTests{
     //vou finalizar esse teste após terminar o da persistencia
+    
+    
 }

@@ -27,7 +27,7 @@ import lombok.ToString;
 @EqualsAndHashCode(of = {"titulo"})
 @Builder
 @Entity
-@SequenceGenerator(sequenceName = "seq_usuario", name = "ID_SEQUENCE", allocationSize = 1)
+@SequenceGenerator(sequenceName = "seq_livro", name = "ID_SEQUENCE", allocationSize = 1)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Livro implements Comparable<Livro>, Serializable{
