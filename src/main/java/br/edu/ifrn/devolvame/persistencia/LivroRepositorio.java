@@ -5,10 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface LivroRepositorio extends CrudRepository<Livro, Long> {
     
-    
     Livro findByStatus (int status);
-    Livro findByTitulo (String titulo);
-    
+    Livro findByTitulo (String titulo);   
 }
 
 
