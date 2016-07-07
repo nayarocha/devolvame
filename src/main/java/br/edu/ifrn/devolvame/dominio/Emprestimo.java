@@ -9,9 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -26,6 +29,8 @@ import lombok.ToString;
 @Builder
 @Entity
 @SequenceGenerator(sequenceName = "seq_emprestimo", name = "ID_SEQUENCE", allocationSize = 1)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Emprestimo implements Serializable, Comparable<Emprestimo>{
     
     @Id
@@ -60,4 +65,13 @@ public class Emprestimo implements Serializable, Comparable<Emprestimo>{
         
     }
     
+    public void verificarUsuario() {
+        
+        if (donoLivro instanceof Usuario) {
+             throw new IllegalArgumentException("Dono do Livro não poder ser do tipo Usuário: " + donoLivro);         
+        }
+        if (destinatario instanceof Usuario) {
+            throw new IllegalArgumentException("Destinatário não pode ser do tipo Usuário: " + destinatario);
+        }
+    }
 }

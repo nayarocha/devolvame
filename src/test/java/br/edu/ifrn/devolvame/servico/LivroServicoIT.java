@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
-@Test(groups = "livro")
+@Test(groups = "livro", dependsOnGroups = "categoria")
 public class LivroServicoIT extends AbstractTestNGSpringContextTests{
     
     @Inject

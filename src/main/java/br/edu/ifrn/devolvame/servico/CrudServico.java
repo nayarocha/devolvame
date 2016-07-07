@@ -2,7 +2,10 @@ package br.edu.ifrn.devolvame.servico;
 
 import java.io.Serializable;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
+
+@Transactional()
 public class CrudServico <O extends Object, ID extends Serializable> {
     
     private CrudRepository<O, ID> repositorio;
@@ -12,17 +15,16 @@ public class CrudServico <O extends Object, ID extends Serializable> {
         this.repositorio = repositorio;
     }
     
-    //deleta todos
+    @Transactional
     public void deleteAll() {
         repositorio.deleteAll();
     }   
     
-    //deleta um
+    @Transactional  
     public void delete(O objeto) {
         repositorio.delete(objeto);
     }
     
-    //busca todos
     public Iterable<O> findAll() {
         return repositorio.findAll();
     }
@@ -32,12 +34,12 @@ public class CrudServico <O extends Object, ID extends Serializable> {
         return repositorio.findOne(id);
     }
     
-    // salva todos
+    @Transactional
     public <S extends O> Iterable<S> save(Iterable<S> objetos) {
         return repositorio.save(objetos);
     }
     
-    // salva um 
+    @Transactional
     public <S extends O> S save(S objeto) {
         return repositorio.save(objeto);
     }

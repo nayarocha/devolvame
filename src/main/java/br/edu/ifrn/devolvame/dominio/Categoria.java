@@ -47,5 +47,5 @@ public class Categoria implements Comparable<Categoria>, Serializable {
     @Override
     public int compareTo(Categoria o) {
         return nomeCategoria.compareTo(o.nomeCategoria);
-    }
+    }    
 }

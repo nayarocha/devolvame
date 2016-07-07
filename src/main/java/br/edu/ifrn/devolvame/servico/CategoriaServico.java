@@ -5,5 +5,5 @@ import javax.inject.Named;
 
 @Named
 public class CategoriaServico extends CrudServico <Categoria, Long>{
-    
-}
+   
+}   

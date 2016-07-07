@@ -6,7 +6,7 @@ endpoints:
 spring: 
   datasource: 
     url: jdbc:postgresql://localhost:5432/devolvame
-    username: admin
+    username: devolvame
     password: admin
     # Number of ms to wait before throwing an exception if no connection is available.
     max-wait: 1000
@@ -16,4 +16,5 @@ spring:
     test-on-borrow: true    
   jpa:
     hibernate:
+      ddl-auto: create  
       naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
