@@ -1,9 +1,9 @@
 package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.DevolvameApplication;
+import br.edu.ifrn.devolvame.dominio.Emprestimo;
 import br.edu.ifrn.devolvame.dominio.Livro;
 import br.edu.ifrn.devolvame.dominio.Usuario;
-import java.util.Date;
 import javax.inject.Inject;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -14,7 +14,8 @@ import org.testng.annotations.Test;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
-@Test(groups = "emprestimo")
+//@Test(groups = "emprestimo")
+@Test(dependsOnGroups  = {"livro","usuario"})
 public class EmprestimoRepositorioIT extends AbstractTestNGSpringContextTests {
     
     @Inject
@@ -25,6 +26,9 @@ public class EmprestimoRepositorioIT extends AbstractTestNGSpringContextTests {
     
     @Inject 
     private LivroFabrica livroFabrica;
+    
+    @Inject 
+    private UsuarioFabrica usuarioFabrica;
     
     
     @BeforeMethod
@@ -39,11 +43,43 @@ public class EmprestimoRepositorioIT extends AbstractTestNGSpringContextTests {
     }
 
     
-    /*public void novoEmprestimo(){
-      //Criar 2 usuários: donoLivro e destinatario quando tiver UsuarioFabrica
-      Date data = new Date();
+    public void novoEmprestimo(){
       Livro livro = livroFabrica.jogosVorazes();
       
-      //emprestimoFabrica.emprestimo("Batman", "Robin", livro);    
-    }*/
+      Usuario user1 = usuarioFabrica.user1();
+      Usuario user2 = usuarioFabrica.user2();
+      
+      Emprestimo  emprestimo = emprestimoFabrica.emprestimo(user1, user2, livro);
+      emprestimoRepositorio.save(emprestimo);
+      assertThat(emprestimoRepositorio.findAll().iterator().next()).isEqualTo(emprestimo);
+    }    
+    
+    public void deletarEmprestimo(){
+        Livro livro = livroFabrica.jogosVorazes();
+      
+        Usuario user1 = usuarioFabrica.user1();
+        Usuario user2 = usuarioFabrica.user2();
+        
+        Emprestimo emprestimo = emprestimoFabrica.emprestimo(user1, user2, livro);   
+        emprestimoRepositorio.delete(emprestimo);
+        assertThat(emprestimoRepositorio.findOne(emprestimo.getId())).isNull();
+    }
+    
+    public void emprestimoLivrosDiferentesMesmoUsuario(){
+        Livro steveJobs = livroFabrica.steveJobs();
+        Livro jogosVorazes = livroFabrica.jogosVorazes();
+        
+        //Dono do livro steveJobs
+        Usuario adolfo =  usuarioFabrica.adolfo();  
+        
+        //Dono do livro jogos vorazes
+        Usuario pedro = usuarioFabrica.pedro();
+        
+        //destinatario dos livros
+        Usuario nayara = usuarioFabrica.nayara();
+       
+        Emprestimo livroSteveJobs = emprestimoFabrica.emprestimo(adolfo, nayara, steveJobs);
+        Emprestimo livrojogosVorazes = emprestimoFabrica.emprestimo(pedro, nayara, jogosVorazes);
+        assertThat(livroSteveJobs).isNotEqualByComparingTo(livrojogosVorazes);
+    }
 }

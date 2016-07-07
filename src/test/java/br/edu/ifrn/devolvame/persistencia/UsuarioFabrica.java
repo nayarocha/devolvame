@@ -9,6 +9,10 @@ import javax.inject.Named;
 public class UsuarioFabrica {
     public final static String USER1 = "pedrorafael0251@gmail.com";
     public final static String USER2 = "nayarocha@gmail.com";
+    
+    public final static String ADOLFO = "adolfo";
+    public final static String NAYARA = "Nayara";
+    public final static String PEDRO =  "Pedro"; 
    
      
     @Inject 
@@ -30,5 +34,17 @@ public class UsuarioFabrica {
     
     public Usuario user2(){
         return usuario(USER2);
+    }
+    
+    public Usuario nayara(){
+        return usuario(NAYARA);
+    }
+    
+    public Usuario adolfo(){
+        return usuario(ADOLFO);
+    }
+    
+    public Usuario pedro(){
+        return usuario(PEDRO);
     }
 }

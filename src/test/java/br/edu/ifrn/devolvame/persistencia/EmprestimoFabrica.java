@@ -6,8 +6,6 @@ import br.edu.ifrn.devolvame.dominio.Emprestimo;
 import br.edu.ifrn.devolvame.dominio.Livro;
 import br.edu.ifrn.devolvame.dominio.Usuario;
 import java.util.Date;
-import static org.assertj.core.api.Assertions.assertThat;
-import org.testng.annotations.BeforeMethod;
 
 @Named
 public class EmprestimoFabrica {
@@ -33,6 +31,6 @@ public class EmprestimoFabrica {
        emprestimoRepositorio.save(emprestimo);
        return emprestimo;
     }
-    
+  
     
 }
