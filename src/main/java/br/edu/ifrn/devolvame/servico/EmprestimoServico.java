@@ -3,12 +3,18 @@ package br.edu.ifrn.devolvame.servico;
 import br.edu.ifrn.devolvame.dominio.Emprestimo;
 import br.edu.ifrn.devolvame.dominio.Livro;
 import br.edu.ifrn.devolvame.dominio.Usuario;
+import br.edu.ifrn.devolvame.persistencia.LivroRepositorio;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
 @Named
 public class EmprestimoServico extends ServicoAbstrato<Emprestimo, Long>{
    
+    @Inject private
+    LivroRepositorio livroRepositorio;
+    
+    
     @Override
     public void save(Emprestimo objeto){
         objeto.verificarUsuario();
@@ -29,5 +35,7 @@ public class EmprestimoServico extends ServicoAbstrato<Emprestimo, Long>{
                .destinatario(destinatario)
                .build();
        save(emprestimoLivro);
+       //livroRepositorio.save(livro.setStatus(1));
+       
     }
 }

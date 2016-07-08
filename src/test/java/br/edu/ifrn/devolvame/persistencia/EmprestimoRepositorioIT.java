@@ -46,8 +46,8 @@ public class EmprestimoRepositorioIT extends AbstractTestNGSpringContextTests {
     public void novoEmprestimo(){
       Livro livro = livroFabrica.jogosVorazes();
       
-      Usuario user1 = usuarioFabrica.user1();
-      Usuario user2 = usuarioFabrica.user2();
+      Usuario user1 = usuarioFabrica.pedro();
+      Usuario user2 = usuarioFabrica.nayara();
       
       Emprestimo  emprestimo = emprestimoFabrica.emprestimo(user1, user2, livro);
       emprestimoRepositorio.save(emprestimo);
@@ -57,8 +57,8 @@ public class EmprestimoRepositorioIT extends AbstractTestNGSpringContextTests {
     public void deletarEmprestimo(){
         Livro livro = livroFabrica.jogosVorazes();
       
-        Usuario user1 = usuarioFabrica.user1();
-        Usuario user2 = usuarioFabrica.user2();
+        Usuario user1 = usuarioFabrica.pedro();
+        Usuario user2 = usuarioFabrica.nayara();
         
         Emprestimo emprestimo = emprestimoFabrica.emprestimo(user1, user2, livro);   
         emprestimoRepositorio.delete(emprestimo);

@@ -9,6 +9,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.annotations.Test;
+import java.util.Date;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
@@ -29,6 +30,7 @@ public class EmprestimoServicoIT extends AbstractTestNGSpringContextTests{
                        .donoLivro(usuarioFabrica.nayara())
                        .livro(livroFabrica.jogosVorazes())
                        .destinatario(usuarioFabrica.pedro())
+                       .data(new Date())
                        .build();
             emprestimoServico.save(emprestimo);
  }  

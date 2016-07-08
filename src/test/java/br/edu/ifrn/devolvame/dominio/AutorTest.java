@@ -15,17 +15,17 @@ public class AutorTest {
     
     public void autoresTemOMesmoNome(){
         
-        assertThat(Autor.builder().autor(NOME_DA_AUTORA).build())
-            .isEqualTo(Autor.builder().autor(NOME_DA_AUTORA).build());
+        assertThat(Autor.builder().nome(NOME_DA_AUTORA).build())
+            .isEqualTo(Autor.builder().nome(NOME_DA_AUTORA).build());
     }
     public void autoresTemNomesDiferentes(){
-        assertThat(Autor.builder().autor(NOME_DA_AUTORA).build())
-            .isNotEqualTo(Autor.builder().autor(NOME_DE_AUTOR).build());
+        assertThat(Autor.builder().nome(NOME_DA_AUTORA).build())
+            .isNotEqualTo(Autor.builder().nome(NOME_DE_AUTOR).build());
     }
     
     public void compareTo(){
-        Autor autor = Autor.builder().autor(NOME_DE_AUTOR).build();
-        Autor autora = Autor.builder().autor(NOME_DA_AUTORA).build();
+        Autor autor = Autor.builder().nome(NOME_DE_AUTOR).build();
+        Autor autora = Autor.builder().nome(NOME_DA_AUTORA).build();
         
         assertThat(autor.compareTo(autora)).isGreaterThan(0);
         

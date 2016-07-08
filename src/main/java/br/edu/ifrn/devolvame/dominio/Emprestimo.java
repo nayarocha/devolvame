@@ -48,7 +48,9 @@ public class Emprestimo implements Serializable, Comparable<Emprestimo>{
     private Usuario destinatario;
     
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Livro livro;
+    @JoinColumn(nullable = false)
     private Date data;
 
     @Override

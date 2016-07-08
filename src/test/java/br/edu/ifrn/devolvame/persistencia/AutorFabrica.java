@@ -15,7 +15,7 @@ public class AutorFabrica {
     private Autor autor(String nome){
         Autor autor  = autorRepositorio.findByNome(nome);
         if(autor == null){
-            autor = Autor.builder().autor(nome).build();
+            autor = Autor.builder().nome(nome).build();
             autorRepositorio.save(autor);
         }
         return autor;

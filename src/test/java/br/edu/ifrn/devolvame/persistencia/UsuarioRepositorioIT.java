@@ -33,22 +33,22 @@ public class UsuarioRepositorioIT extends AbstractTestNGSpringContextTests{
     }
     
     public void findByEmail(){
-        Usuario user1 = usuarioFabrica.user1();
-        Usuario user2 = usuarioFabrica.user2();
+        Usuario user1 = usuarioFabrica.adolfo();
+        Usuario user2 = usuarioFabrica.pedro();
         
-        assertThat(usuarioRepositorio.findByEmailUsuario(USER1)).isEqualTo(user1);
-        assertThat(usuarioRepositorio.findByEmailUsuario(USER2)).isEqualTo(user2);
+        assertThat(usuarioRepositorio.findByEmail(USER1)).isEqualTo(user1);
+        assertThat(usuarioRepositorio.findByEmail(USER2)).isEqualTo(user2);
     }
     
     public void countByEmail(){
-        usuarioFabrica.user1();
-        usuarioFabrica.user2();
+        usuarioFabrica.adolfo();
+        usuarioFabrica.pedro();
         
         assertThat(usuarioRepositorio.countByEmailContains("o")).isEqualTo(2);
     }
     
     public void deleteByEmail(){
-        usuarioFabrica.user1();
+        usuarioFabrica.adolfo();
         
         usuarioRepositorio.deleteByEmail(USER1);
         

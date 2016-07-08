@@ -24,7 +24,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode(of="autor")
+@EqualsAndHashCode(of="nome")
 @Builder
 @Entity
 @SequenceGenerator(sequenceName = "seq_autor", name = "ID_SEQUENCE", allocationSize = 1)
@@ -38,11 +38,11 @@ public class Autor implements Comparable<Autor>, Serializable {
     private Long id;
     
     @Column(nullable = false)
-    private String autor;
+    private String nome;
     
     @Override
     public int compareTo(Autor a) {
-        return autor.compareTo(a.autor);
+        return nome.compareTo(a.nome);
     }
     
 }
