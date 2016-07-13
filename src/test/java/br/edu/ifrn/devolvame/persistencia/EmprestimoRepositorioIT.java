@@ -14,8 +14,7 @@ import org.testng.annotations.Test;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
-//@Test(groups = "emprestimo")
-@Test(dependsOnGroups  = {"livro","usuario"})
+@Test(groups = "emprestimo")
 public class EmprestimoRepositorioIT extends AbstractTestNGSpringContextTests {
     
     @Inject

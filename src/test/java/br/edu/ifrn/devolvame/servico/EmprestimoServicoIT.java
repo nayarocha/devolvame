@@ -13,7 +13,7 @@ import java.util.Date;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
-@Test(groups = "emprestimo", dependsOnGroups = {"livro", "usuario"})
+@Test(groups = "emprestimo")
 public class EmprestimoServicoIT extends AbstractTestNGSpringContextTests{
 
 @Inject private UsuarioFabrica usuarioFabrica;
@@ -28,8 +28,8 @@ public class EmprestimoServicoIT extends AbstractTestNGSpringContextTests{
      Emprestimo emprestimo = 
             Emprestimo.builder()
                        .donoLivro(usuarioFabrica.nayara())
-                       .livro(livroFabrica.jogosVorazes())
                        .destinatario(usuarioFabrica.pedro())
+                       .livro(livroFabrica.jogosVorazes()) 
                        .data(new Date())
                        .build();
             emprestimoServico.save(emprestimo);

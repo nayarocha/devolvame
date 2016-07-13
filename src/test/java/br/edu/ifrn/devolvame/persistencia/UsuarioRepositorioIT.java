@@ -4,6 +4,7 @@ import br.edu.ifrn.devolvame.DevolvameApplication;
 import br.edu.ifrn.devolvame.dominio.Usuario;
 import static br.edu.ifrn.devolvame.persistencia.UsuarioFabrica.USER1;
 import static br.edu.ifrn.devolvame.persistencia.UsuarioFabrica.USER2;
+import static br.edu.ifrn.devolvame.persistencia.UsuarioFabrica.USER3;
 import javax.inject.Inject;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -36,21 +37,21 @@ public class UsuarioRepositorioIT extends AbstractTestNGSpringContextTests{
         Usuario user1 = usuarioFabrica.adolfo();
         Usuario user2 = usuarioFabrica.pedro();
         
-        assertThat(usuarioRepositorio.findByEmail(USER1)).isEqualTo(user1);
-        assertThat(usuarioRepositorio.findByEmail(USER2)).isEqualTo(user2);
+        assertThat(usuarioRepositorio.findByEmail(USER3)).isEqualTo(user1);
+        assertThat(usuarioRepositorio.findByEmail(USER1)).isEqualTo(user2);
     }
     
-    public void countByEmail(){
+    /*public void countByEmail(){
         usuarioFabrica.adolfo();
         usuarioFabrica.pedro();
         
-        assertThat(usuarioRepositorio.countByEmailContains("o")).isEqualTo(2);
+        assertThat(usuarioRepositorio.countByEmail(USER1.contains())
     }
-    
+    */
     public void deleteByEmail(){
         usuarioFabrica.adolfo();
         
-        usuarioRepositorio.deleteByEmail(USER1);
+        usuarioRepositorio.deleteByEmail(USER3);
         
         assertThat(usuarioRepositorio.findAll()).isEmpty();
     }

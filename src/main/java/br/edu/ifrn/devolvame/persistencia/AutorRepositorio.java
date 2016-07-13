@@ -8,6 +8,5 @@ public interface AutorRepositorio extends CrudRepository<Autor, Long> {
     
     Autor findByNome(String nome);
     
-    @Transactional
     void deleteByNome(String nome);
 }

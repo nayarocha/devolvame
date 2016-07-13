@@ -7,7 +7,7 @@ import javax.inject.Named;
 
 @Named
 public class UsuarioFabrica {
-    public final static String USER1 = "pedrorafael0251@gmail.com";
+    public final static String USER1 = "pedro@gmail.com";
     public final static String USER2 = "nayarocha@gmail.com";
     public final static String USER3 = "adolfo@gmail.com";
     
