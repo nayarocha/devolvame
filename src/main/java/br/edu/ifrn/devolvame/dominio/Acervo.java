@@ -54,14 +54,6 @@ public class Acervo implements Comparable<Acervo>, Serializable{
     private String descricao;
 
     
-    /*private Acervo(Long id, Usuario user, Set<Livro> livros, String desc){
-        this.id = id;
-        this.usuario = user;
-        this.livros = livros;
-        this.descricao = desc;
-    }*/
-
-    
     @Override
     public int compareTo(Acervo a) {
         
