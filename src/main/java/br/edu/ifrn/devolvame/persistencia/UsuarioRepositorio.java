@@ -8,6 +8,6 @@ public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> {
     Usuario findByEmail(String email);
     Usuario countByEmail(String email);
     
-
+    @Transactional
     void deleteByEmail(String email);
 }

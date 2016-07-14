@@ -42,7 +42,7 @@ public class EmprestimoRepositorioIT extends AbstractTestNGSpringContextTests {
     }
 
     
-    public void novoEmprestimo(){
+    /*public void novoEmprestimo(){
       Livro livro = livroFabrica.jogosVorazes();
       
       Usuario user1 = usuarioFabrica.pedro();
@@ -51,7 +51,7 @@ public class EmprestimoRepositorioIT extends AbstractTestNGSpringContextTests {
       Emprestimo  emprestimo = emprestimoFabrica.emprestimo(user1, user2, livro);
       emprestimoRepositorio.save(emprestimo);
       assertThat(emprestimoRepositorio.findAll().iterator().next()).isEqualTo(emprestimo);
-    }    
+    }  */
     
     public void deletarEmprestimo(){
         Livro livro = livroFabrica.jogosVorazes();

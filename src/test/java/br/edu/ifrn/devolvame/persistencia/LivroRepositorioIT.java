@@ -17,7 +17,8 @@ import org.testng.annotations.Test;
 
 @SpringApplicationConfiguration(classes = DevolvameApplication.class)
 @WebAppConfiguration
-@Test(groups = "livro", dependsOnGroups  = {"categoria"})
+//@Test(groups = "livro", dependsOnGroups  = {"categoria"})
+@Test(groups = "livro")
 public class LivroRepositorioIT extends AbstractTestNGSpringContextTests {
 
     @Inject
