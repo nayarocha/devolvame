@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -54,7 +55,7 @@ public class Usuario implements Comparable<Usuario>, Serializable{
     @OneToOne(mappedBy = "usuario")
     private Acervo acervo; 
     
-    @OneToMany(mappedBy = "donoLivro")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "donoLivro")
     private Set<Emprestimo> listagemEmprestimo; 
     
     @Override
