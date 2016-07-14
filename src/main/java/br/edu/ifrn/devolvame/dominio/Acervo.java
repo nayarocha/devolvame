@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +35,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @SequenceGenerator(sequenceName = "seq_acervo", name = "ID_SEQUENCE", allocationSize = 1)
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Acervo implements Comparable<Acervo>, Serializable{
     
@@ -45,8 +47,7 @@ public class Acervo implements Comparable<Acervo>, Serializable{
     @OneToOne
     private Usuario usuario;
     
-    @OneToMany
-    //private List<Livro> livros = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Livro> livros;
     
     @Column(nullable = false)

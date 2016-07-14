@@ -25,14 +25,13 @@ public class AcervoRepositorioIT extends AbstractTestNGSpringContextTests{
     @Inject
     AcervoFabrica acervoFabrica;
     
-        
     @BeforeMethod
     void deletarTodos(){
         acervoRepositorio.deleteAll();
         assertThat(acervoRepositorio.findAll()).isEmpty();
     }
     
-    public void findByUsuarioAcervo(){
+    public void findByUsuario(){
         String descricao = "um acervo massa";
         Acervo acervo = acervoFabrica.acervo(descricao);
         

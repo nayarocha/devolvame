@@ -46,8 +46,8 @@ public class UsuarioRepositorioIT extends AbstractTestNGSpringContextTests{
         usuarioFabrica.pedro();
         
         assertThat(usuarioRepositorio.countByEmail(USER1.contains())
-    }
-    */
+    }*/
+    
     public void deleteByEmail(){
         usuarioFabrica.adolfo();
         
