@@ -45,6 +45,7 @@ public class Acervo implements Comparable<Acervo>, Serializable{
     private Long id;
     
     @OneToOne
+    @Column(nullable = false)
     private Usuario usuario;
     
     @OneToMany(fetch = FetchType.EAGER)
