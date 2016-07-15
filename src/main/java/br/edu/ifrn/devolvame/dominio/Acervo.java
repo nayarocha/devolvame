@@ -1,15 +1,13 @@
 package br.edu.ifrn.devolvame.dominio;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -45,7 +43,7 @@ public class Acervo implements Comparable<Acervo>, Serializable{
     private Long id;
     
     @OneToOne
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private Usuario usuario;
     
     @OneToMany(fetch = FetchType.EAGER)
