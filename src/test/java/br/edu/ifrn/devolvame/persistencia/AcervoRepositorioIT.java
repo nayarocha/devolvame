@@ -2,6 +2,7 @@ package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.DevolvameApplication;
 import br.edu.ifrn.devolvame.dominio.Acervo;
+import br.edu.ifrn.devolvame.dominio.Usuario;
 import javax.inject.Inject;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -31,7 +32,7 @@ public class AcervoRepositorioIT extends AbstractTestNGSpringContextTests{
         assertThat(acervoRepositorio.findAll()).isEmpty();
     }
     
-    public void findByUsuario(){
+    public void findByUsuario(Usuario usuario){
         String descricao = "um acervo massa";
         Acervo acervo = acervoFabrica.acervo(descricao);
         
