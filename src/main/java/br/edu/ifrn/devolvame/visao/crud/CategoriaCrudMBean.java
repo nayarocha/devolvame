@@ -13,5 +13,4 @@ public class CategoriaCrudMBean extends CrudMBean<Categoria, Long> {
 	protected Categoria createBean() {
 		return Categoria.builder().build();
 	}
-
 }
