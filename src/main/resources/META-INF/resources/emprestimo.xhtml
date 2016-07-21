@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://ifrn.edu.br/devolvame"
+      template="layout/template.xhtml">
+    <ui:define name="content">
+        <c:crud title="Emprestimo" managedBean="#{emprestimoCrudMBean}">
+            <ui:define name="listColumns">
+                <p:column headerText="Data" sortBy="#{bean.data}" >
+                    <c:date pattern="dd/MM/yyyy HH:mm:ss" readonly="true" value="#{bean.data}" />
+                </p:column>
+                <p:column headerText="Dono do Livro" sortBy="#{bean.usuario.donoLivro}" 
+                          filterBy="#{bean.usuario.id}" filterOptions="#{usuarioOptions.emptyOptions}" filterMatchMode="exact">
+                    <h:outputText value="#{bean.usuario.donoLivro}" />
+                </p:column>
+                <p:column headerText="Destinatário" sortBy="#{bean.usuario.destinatario}" 
+                          filterBy="#{bean.usuario.id}" filterOptions="#{usuarioOptions.emptyOptions}" filterMatchMode="exact">
+                    <h:outputText value="#{bean.usuario.destinatario}" />
+                </p:column>
+                <p:column headerText="Livro" sortBy="#{bean.Livro.titulo}" 
+                          filterBy="#{bean.livro.id}" filterOptions="#{livroOptions.emptyOptions}" filterMatchMode="exact">
+                    <h:outputText value="#{bean.livro.titulo}" />
+                </p:column>
+            </ui:define>
+            <ui:define name="detail">
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:date pattern="dd/MM/yyyy HH:mm:ss" readonly="true" value="#{emprestimoCrudMBean.bean.data}" label="Data"/>
+                    <c:text readonly="true" value="#{emprestimoCrudMBean.bean.usuario.donoLivro}" label="Dono do Livro" />
+                    <c:text readonly="true" value="#{emprestimoCrudMBean.bean.usuario.destinatario}" label="Destinatário"/>
+                    <c:text readonly="true" value="#{emprestimoCrudMBean.bean.Livro.titulo}" label="Livro"/>
+                </h:panelGrid>
+            </ui:define>
+            <ui:define name="insert">
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:date required="true" pattern="dd/MM/yyyy HH:mm:ss" value="#{emprestimoCrudMBean.bean.data}" label="Data"/>
+                    <c:select id="donoLivro" required="true" value="#{emprestimoCrudMBean.bean.donoLivro}" label="Dono do Livro" options="#{donoLivroOptions}"/>
+                    <c:select id="destinatario" required="true" value="#{emprestimoCrudMBean.bean.destinatario}" label="Destinatário" options="#{destinatarioOptions}"/>
+                    <c:select id="titulo" required="true" value="#{emprestimoCrudMBean.bean.titulo}" label="Livro" options="#{tituloOptions}"/>
+                </h:panelGrid>                
+            </ui:define>
+            <ui:define name="update">
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:date id="updateDate" required="true" pattern="dd/MM/yyyy HH:mm:ss" value="#{emprestimoCrudMBean.bean.data}" label="Data"/>
+                    <c:select required="true" value="#{emprestimoCrudMBean.bean.donoLivro}"
+                              label="Dono do Livro" options="#{usuarioOptions}"/>
+                    <c:select required="true" value="#{emprestimoCrudMBean.bean.destinatario}" label="Destinatário" options="#{destinatarioOptions}"/>
+                    <c:select required="true" value="#{emprestimooCrudMBean.bean.titulo}" label="Titulo" options="#{tituloOptions}"/>
+                </h:panelGrid>                
+            </ui:define>
+        </c:crud>
+    </ui:define>
+</ui:composition>
