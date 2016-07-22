@@ -4,5 +4,5 @@ import br.edu.ifrn.devolvame.dominio.Usuario;
 import javax.inject.Named;
 
 @Named
-public class UsuarioServico extends ServicoAbstrato<Usuario, Long>{
+public class UsuarioServico extends CrudServico<Usuario, Long>{
 }

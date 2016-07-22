@@ -9,17 +9,17 @@ import javax.inject.Named;
 import javax.transaction.Transactional;
 
 @Named
-public class EmprestimoServico extends ServicoAbstrato<Emprestimo, Long>{
+public class EmprestimoServico extends CrudServico<Emprestimo, Long>{
    
     @Inject private
     LivroRepositorio livroRepositorio;
     
     
     @Override
-    public void save(Emprestimo objeto){
+    public Emprestimo save(Emprestimo objeto){
         objeto.verificarUsuario();
         
-        super.save(objeto);
+        return super.save(objeto);
     }
     
     @Transactional

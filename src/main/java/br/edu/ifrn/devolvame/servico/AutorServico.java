@@ -4,5 +4,5 @@ import br.edu.ifrn.devolvame.dominio.Autor;
 import javax.inject.Named;
 
 @Named
-public class AutorServico extends ServicoAbstrato<Autor, Long>{
+public class AutorServico extends CrudServico<Autor, Long>{
 }
