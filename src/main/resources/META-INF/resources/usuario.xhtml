@@ -17,16 +17,34 @@
                 <h:panelGrid columns="2" cellpadding="3">
                     <c:text readonly="true" value="#{usuarioCrudMBean.bean.nome}" label="Nome" />
                 </h:panelGrid>
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:text readonly="true" value="#{usuarioCrudMBean.bean.email}" label="Email" />
+                </h:panelGrid>
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:text readonly="true" value="#{usuarioCrudMBean.bean.senha}" label="Senha" />
+                </h:panelGrid>
             </ui:define>
             <ui:define name="insert">
                 <h:panelGrid columns="2" cellpadding="3">
                     <c:text id="nome" required="true" value="#{usuarioCrudMBean.bean.nome}" label="Nome" />
-                </h:panelGrid>                
+                </h:panelGrid> 
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:text id="email" required="true" value="#{usuarioCrudMBean.bean.email}" label="Email" />
+                </h:panelGrid> 
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:text id="senha" required="true" value="#{usuarioCrudMBean.bean.senha}" label="Senha" />
+                </h:panelGrid> 
             </ui:define>
             <ui:define name="update">
                 <h:panelGrid columns="2" cellpadding="3">
                     <c:text required="true" value="#{usuarioCrudMBean.bean.nome}" label="Nome" />
-                </h:panelGrid>                
+                </h:panelGrid>            
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:text required="true" value="#{usuarioCrudMBean.bean.email}" label="Email" />
+                </h:panelGrid>  
+                <h:panelGrid columns="2" cellpadding="3">
+                    <c:text required="true" value="#{usuarioCrudMBean.bean.senha}" label="Senha" />
+                </h:panelGrid> 
             </ui:define>
         </c:crud>
     </ui:define>

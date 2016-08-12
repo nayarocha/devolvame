@@ -14,7 +14,16 @@ spring:
     max-active: 4
     # Validate the connection before borrowing it from the pool.
     test-on-borrow: true    
+    validationQuery: SELECT 1
   jpa:
     hibernate:
-      ddl-auto: create  
-      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+        naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+        ddl-auto: create
+    show-sql: true 
+
+jsf:
+    primefaces:
+        theme: bootstrap
+info:
+    url: @project.url@
+    version: @project.version@
