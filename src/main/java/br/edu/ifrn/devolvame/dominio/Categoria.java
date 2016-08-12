@@ -24,13 +24,13 @@ import lombok.ToString;
  */
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "livrosDaCategoria")
 @EqualsAndHashCode(of = {"nomeCategoria"})
 @Builder
 @Entity
 @SequenceGenerator(sequenceName = "seq_categoria", name = "ID_SEQUENCE", allocationSize = 1)
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Categoria implements Comparable<Categoria>, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,12 +40,27 @@ public class Categoria implements Comparable<Categoria>, Serializable {
     @Column(nullable = false)
     private String nomeCategoria;
    
+    
+    
     @OneToMany(mappedBy =  "categoria")
     private Set<Livro> livrosDaCategoria; 
 
 
     @Override
     public int compareTo(Categoria o) {
-        return nomeCategoria.compareTo(o.nomeCategoria);
+        int result = 0;
+		if (nomeCategoria != null && o.nomeCategoria != null) {
+			result = this.nomeCategoria.compareTo(o.nomeCategoria);
+		}
+		else if (this.nomeCategoria == null && o.nomeCategoria == null) {
+			result = 0;
+		}
+		else if (this.nomeCategoria == null) {
+			result = -1;
+		}
+		else {
+			result = +1;
+		}
+		return result;
     }    
 }

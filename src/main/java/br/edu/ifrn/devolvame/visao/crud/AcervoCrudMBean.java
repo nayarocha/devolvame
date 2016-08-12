@@ -12,8 +12,7 @@ public class AcervoCrudMBean extends CrudMBean<Acervo, Long> {
 	@Override
 	protected Acervo createBean() {
 		return Acervo.builder()
-                       .usuario(Usuario.builder().id(Long.MIN_VALUE).build())
-                        
+                       .usuario(Usuario.builder().id(Long.MIN_VALUE).build()) 
                         .build();
 	}
         

@@ -23,7 +23,9 @@
                 <h:panelGrid columns="2" cellpadding="3">
                     <c:text readonly="true" value="#{usuarioCrudMBean.bean.senha}" label="Senha" />
                 </h:panelGrid>
-                
+                 <h:outputLabel for="id" value="#{usuarioCrudMBean.bean.id}" />
+                  
+                                
             </ui:define>
             <ui:define name="insert">
                 <h:panelGrid columns="2" cellpadding="3">
@@ -38,6 +40,7 @@
                
             </ui:define>
             <ui:define name="update">
+                
                 <h:panelGrid columns="2" cellpadding="3">
                     <c:text required="true" value="#{usuarioCrudMBean.bean.nome}" label="Nome" />
                 </h:panelGrid>            
