@@ -2,6 +2,8 @@ package br.edu.ifrn.devolvame.persistencia;
 
 import br.edu.ifrn.devolvame.dominio.Acervo;
 import br.edu.ifrn.devolvame.dominio.Livro;
+import static br.edu.ifrn.devolvame.dominio.QUsuario.usuario;
+import br.edu.ifrn.devolvame.dominio.Usuario;
 import java.util.TreeSet;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,6 +20,7 @@ public class AcervoFabrica {
             TreeSet<Livro> livros = new TreeSet<>();
             acrv = Acervo.builder()
                     .descricao(descricao)
+                    .usuario(Usuario.builder().id(Long.MIN_VALUE).build())
                     .livros(livros)
                     .build();
             acervoRepositorio.save(acrv);

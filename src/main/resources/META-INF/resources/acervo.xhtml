@@ -20,6 +20,9 @@
             </ui:define>
             <ui:define name="insert">
                 <h:panelGrid columns="2" cellpadding="3">
+                    <c:text id="usuario" required="true" value="#{acervoCrudMBean.bean.usuario.id}" label="IdUsuario" />
+                </h:panelGrid> 
+                <h:panelGrid columns="2" cellpadding="3">
                     <c:text id="descricao" required="true" value="#{acervoCrudMBean.bean.descricao}" label="Descrição" />
                 </h:panelGrid>                
             </ui:define>

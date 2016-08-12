@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
@@ -33,7 +34,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @SequenceGenerator(sequenceName = "seq_acervo", name = "ID_SEQUENCE", allocationSize = 1)
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Acervo implements Comparable<Acervo>, Serializable{
     
@@ -43,7 +44,7 @@ public class Acervo implements Comparable<Acervo>, Serializable{
     private Long id;
     
     @OneToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, foreignKey= @ForeignKey(name = "fk_acervo_usuario"))
     private Usuario usuario;
     
     @OneToMany(fetch = FetchType.EAGER)
