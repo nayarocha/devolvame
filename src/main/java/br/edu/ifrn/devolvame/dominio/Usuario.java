@@ -78,26 +78,4 @@ public class Usuario implements Comparable<Usuario>, Serializable{
 		}
 		return result;
     }
-    
-    
-     /*@Override
-    public int compareTo(Categoria o) {
-        int result = 0;
-		if (nomeCategoria != null && o.nomeCategoria != null) {
-			result = this.nomeCategoria.compareTo(o.nomeCategoria);
-		}
-		else if (this.nomeCategoria == null && o.nomeCategoria == null) {
-			result = 0;
-		}
-		else if (this.nomeCategoria == null) {
-			result = -1;
-		}
-		else {
-			result = +1;
-		}
-		return result;
-    }    
-      */
-   
-    
 }
