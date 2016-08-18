@@ -26,7 +26,7 @@ import lombok.AllArgsConstructor;
  */
 @Getter()
 @Setter()
-@ToString
+@ToString(exclude = "livrosDoUsuario")
 @EqualsAndHashCode(of = {"email"})
 @Builder
 @Entity
@@ -53,16 +53,51 @@ public class Usuario implements Comparable<Usuario>, Serializable{
     private byte[] img;
     
     @OneToOne(mappedBy = "usuario")
-    private Acervo acervo; 
+    private Acervo acervo;
+    
+    @OneToMany(mappedBy =  "usuario")
+    private Set<Livro> livrosDoUsuario; 
     
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "donoLivro")
     private Set<Emprestimo> listagemEmprestimo; 
     
     @Override
     public int compareTo(Usuario o) {
-        return email.compareTo(o.email);
+        int result = 0;
+        if (email != null && o.email != null) {
+			result = this.email.compareTo(o.email);
+		}
+		else if (this.email == null && o.email == null) {
+			result = 0;
+		}
+		else if (this.email == null) {
+			result = -1;
+		}
+		else {
+			result = +1;
+		}
+		return result;
     }
-      
+    
+    
+     /*@Override
+    public int compareTo(Categoria o) {
+        int result = 0;
+		if (nomeCategoria != null && o.nomeCategoria != null) {
+			result = this.nomeCategoria.compareTo(o.nomeCategoria);
+		}
+		else if (this.nomeCategoria == null && o.nomeCategoria == null) {
+			result = 0;
+		}
+		else if (this.nomeCategoria == null) {
+			result = -1;
+		}
+		else {
+			result = +1;
+		}
+		return result;
+    }    
+      */
    
     
 }

@@ -34,6 +34,12 @@
                     <c:select  id="categoria" required="true" value="#{livroCrudMBean.bean.categoria}" 
                                options="#{categoriaOptions}" label="Categoria"
                     />
+                    
+                    <c:select  id="usuario" required="true" value="#{livroCrudMBean.bean.usuario}" 
+                               options="#{usuarioOptions}" label="Email usuario"
+                    />
+                    
+                    
                 </h:panelGrid>                
             </ui:define>
             <ui:define name="update">
