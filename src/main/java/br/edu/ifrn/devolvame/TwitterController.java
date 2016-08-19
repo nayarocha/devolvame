@@ -40,7 +40,7 @@ public class TwitterController {
         
         HttpSession session = request.getSession();
         HttpSession nome = request.getSession();
-        session.setAttribute("useriD", twitter.userOperations().getUserProfile().getProfileImageUrl());
+        session.setAttribute("imgProfile", twitter.userOperations().getUserProfile().getProfileImageUrl());
         nome.setAttribute("nometwitter", twitter.userOperations().getUserProfile().getName());
        
         return "redirect:usuario.jsf";
