@@ -24,7 +24,7 @@
                     <c:text readonly="true" value="#{usuarioCrudMBean.bean.senha}" label="Senha" />
                 </h:panelGrid>
                  <h:outputLabel for="id" value="#{usuarioCrudMBean.bean.id}" />
-                  
+    
                                 
             </ui:define>
             <ui:define name="insert">
@@ -35,7 +35,9 @@
                     <c:text id="email" required="true" value="#{usuarioCrudMBean.bean.email}" label="Email" />
                 </h:panelGrid> 
                 <h:panelGrid columns="2" cellpadding="3">
-                    <c:text id="senha" required="true" value="#{usuarioCrudMBean.bean.senha}" label="Senha" />
+                    <h:outputText value="Senha : " />
+                    <p:password id="senha" value="#{usuarioCrudMBean.bean.senha}" />
+                    
                 </h:panelGrid> 
                
             </ui:define>
@@ -48,7 +50,8 @@
                     <c:text required="true" value="#{usuarioCrudMBean.bean.email}" label="Email" />
                 </h:panelGrid>  
                 <h:panelGrid columns="2" cellpadding="3">
-                    <c:text required="true" value="#{usuarioCrudMBean.bean.senha}" label="Senha" />
+                   <h:outputText value="Senha : " />
+                    <p:password  value="#{usuarioCrudMBean.bean.senha}" />
                 </h:panelGrid> 
             </ui:define>
         </c:crud>
