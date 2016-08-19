@@ -53,19 +53,27 @@ public class Emprestimo implements Serializable, Comparable<Emprestimo>{
     @JoinColumn(nullable = false)
     private Date data;
 
+   
+    
     @Override
     public int compareTo(Emprestimo o) {
-        int retorno = data.compareTo(o.data);
-        
-        if(retorno == 0){
-            retorno = livro.compareTo(o.livro);
-        }
-        if(retorno == 0){
-            retorno = donoLivro.compareTo(o.donoLivro);
-        }
-        return retorno;
-        
+        int result = 0;
+        if (donoLivro != null && o.donoLivro != null) {
+			result = this.donoLivro.compareTo(o.donoLivro);
+		}
+		else if (this.donoLivro == null && o.donoLivro == null) {
+			result = 0;
+		}
+		else if (this.donoLivro == null) {
+			result = -1;
+		}
+		else {
+			result = +1;
+		}
+		return result;
     }
+    
+    
     
     public void verificarUsuario() {
         
