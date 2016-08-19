@@ -10,7 +10,7 @@
 
         <div>
             <img th:if="${userID}" 
-                 th:src="'http://graph.facebook.com/'+ ${userID} + '/picture'"/>  
+                 th:src="'https://api.twitter.com/oauth/authenticate?'+ ${userID} + '/picture'"/>  
             <span th:text="${facebookProfileName}">You only live once</span>
             <br/>         Clique <a href="/livro.jsf">aqui</a> para acessar seus livros
         </div>

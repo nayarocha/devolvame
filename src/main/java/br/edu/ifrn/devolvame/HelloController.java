@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/loginface")
 public class HelloController {
 
     private Facebook facebook;
-	private ConnectionRepository connectionRepository;
+    private ConnectionRepository connectionRepository;
        
     @Inject
     public HelloController(Facebook facebook, ConnectionRepository connectionRepository) {
