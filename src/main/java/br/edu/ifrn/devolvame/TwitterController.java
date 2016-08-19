@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/logintwitter")
 public class TwitterController {
      private Twitter twitter;
 
@@ -40,7 +40,7 @@ public class TwitterController {
         
         HttpSession session = request.getSession();
         HttpSession nome = request.getSession();
-        session.setAttribute("useriD", twitter.userOperations().getUserProfile().getId());
+        session.setAttribute("useriD", twitter.userOperations().getUserProfile().getProfileImageUrl());
         nome.setAttribute("nometwitter", twitter.userOperations().getUserProfile().getName());
        
         return "redirect:usuario.jsf";
