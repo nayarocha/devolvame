@@ -2,6 +2,7 @@ package br.edu.ifrn.devolvame.visao.crud;
 
 import br.edu.ifrn.devolvame.dominio.Categoria;
 import br.edu.ifrn.devolvame.dominio.Livro;
+import br.edu.ifrn.devolvame.dominio.Usuario;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
@@ -12,6 +13,7 @@ public class LivroCrudMBean extends CrudMBean<Livro, Long>{
 	protected Livro createBean() {
             return Livro.builder()
                 .categoria(Categoria.builder().build())
+                .usuario(Usuario.builder().build())
                 .build();
 	}
 }

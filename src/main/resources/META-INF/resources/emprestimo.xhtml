@@ -9,21 +9,7 @@
     <ui:define name="content">
         <c:crud title="Emprestimo" managedBean="#{emprestimoCrudMBean}">
             <ui:define name="listColumns">
-                <p:column headerText="Data" sortBy="#{bean.data}" >
-                    <c:date pattern="dd/MM/yyyy HH:mm:ss" readonly="true" value="#{bean.data}" />
-                </p:column>
-                <p:column headerText="Dono do Livro" sortBy="#{bean.usuario.donoLivro}" 
-                          filterBy="#{bean.usuario.id}" filterOptions="#{usuarioOptions.emptyOptions}" filterMatchMode="exact">
-                    <h:outputText value="#{bean.usuario.donoLivro}" />
-                </p:column>
-                <p:column headerText="Destinatário" sortBy="#{bean.usuario.destinatario}" 
-                          filterBy="#{bean.usuario.id}" filterOptions="#{usuarioOptions.emptyOptions}" filterMatchMode="exact">
-                    <h:outputText value="#{bean.usuario.destinatario}" />
-                </p:column>
-                <p:column headerText="Livro" sortBy="#{bean.Livro.titulo}" 
-                          filterBy="#{bean.livro.id}" filterOptions="#{livroOptions.emptyOptions}" filterMatchMode="exact">
-                    <h:outputText value="#{bean.livro.titulo}" />
-                </p:column>
+                
             </ui:define>
             <ui:define name="detail">
                 <h:panelGrid columns="2" cellpadding="3">
@@ -35,10 +21,15 @@
             </ui:define>
             <ui:define name="insert">
                 <h:panelGrid columns="2" cellpadding="3">
-                    <c:date required="true" pattern="dd/MM/yyyy HH:mm:ss" value="#{emprestimoCrudMBean.bean.data}" label="Data"/>
-                    <c:select id="donoLivro" required="true" value="#{emprestimoCrudMBean.bean.donoLivro}" label="Dono do Livro" options="#{donoLivroOptions}"/>
-                    <c:select id="destinatario" required="true" value="#{emprestimoCrudMBean.bean.destinatario}" label="Destinatário" options="#{destinatarioOptions}"/>
-                    <c:select id="titulo" required="true" value="#{emprestimoCrudMBean.bean.titulo}" label="Livro" options="#{tituloOptions}"/>
+                       <c:select  id="donoLivro" required="true" value="#{emprestimoCrudMBean.bean.donoLivro.id}" 
+                               options="#{usuarioOptions}" label="Email usuario"/>
+                    
+                         <c:select  id="livro" required="true" value="#{emprestimoCrudMBean.bean.livro}" 
+                               options="#{livroOptions}" label="Emprestar livro"/>
+                         
+                          <c:select  id="destinatario" required="true" value="#{emprestimoCrudMBean.bean.destinatario.id}" 
+                               options="#{usuarioOptions}" label="Email destinatario"/>
+                  
                 </h:panelGrid>                
             </ui:define>
             <ui:define name="update">

@@ -58,6 +58,15 @@ public class Livro implements Comparable<Livro>, Serializable{
     @JoinColumn(nullable=false, foreignKey = @ForeignKey(name = "fk_livro_categoria"))
     private Categoria categoria;
     
+    
+    @NonNull
+    @ManyToOne
+    @JoinColumn(nullable=false, foreignKey = @ForeignKey(name = "fk_livro_usuario"))
+    private Usuario usuario;
+    
+    
+    
+    
     private Autor autor;
     //Status do livro - emprestado/disponivel
     @Column(nullable = false)

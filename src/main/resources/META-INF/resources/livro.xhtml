@@ -10,6 +10,7 @@
     <ui:define name="content">
         <c:crud title="Livro" managedBean="#{livroCrudMBean}">
             <ui:define name="listColumns">
+                
                 <p:column headerText="Titulo" sortBy="#{bean.titulo}" filterBy="#{bean.titulo}" >
                     <h:outputText value="#{bean.titulo}" />
                 </p:column>
@@ -20,25 +21,54 @@
                 </p:column>
             </ui:define>
             <ui:define name="detail">
-                <h:panelGrid columns="2" cellpadding="3">
-                    <c:text readonly="true" value="#{livroCrudMBean.bean.titulo}" label="Titulo" />
-                </h:panelGrid>
+                
+                 <p:tabView>
+                     <p:tab title="#{livroCrudMBean.bean.titulo} | #{livroCrudMBean.bean.categoria.nomeCategoria} ">
+                         <h:panelGrid columns="2" cellpadding="3">
+                            <c:text readonly="true" value="#{livroCrudMBean.bean.isbn}" label="Titulo" />
+                            <c:text readonly="true" value="#{livroCrudMBean.bean.editora}" label="Editora" />
+                            <c:text readonly="true" value="#{livroCrudMBean.bean.descricao}" label="Descricao" />
+                            <c:text readonly="true" value="#{livroCrudMBean.bean.categoria.nomeCategoria}" label="Categoria" />
+                            <c:text readonly="true" value="#{livroCrudMBean.bean.usuario.nome}" label="Usuario" />
+                        </h:panelGrid>
+                     </p:tab>
+                     
+                 </p:tabView>
+                 
             </ui:define>
+            
+            
             <ui:define name="insert">
                 <h:panelGrid columns="2" cellpadding="3">
                     <c:text id="titulo" required="true" value="#{livroCrudMBean.bean.titulo}" label="Titulo" />
                     <c:text id="isbn" required="true" value="#{livroCrudMBean.bean.isbn}" label="Isbn" />
                     <c:text id="editora" required="true" value="#{livroCrudMBean.bean.editora}" label="Editora" />
+                    <c:text id="descricao" required="true" value="#{livroCrudMBean.bean.descricao}" label="Descricao" />
                     
+                   
                     
                     <c:select  id="categoria" required="true" value="#{livroCrudMBean.bean.categoria}" 
                                options="#{categoriaOptions}" label="Categoria"
                     />
+                    
+                    <c:select  id="usuario" required="true" value="#{livroCrudMBean.bean.usuario}" 
+                               options="#{usuarioOptions}" label="Email usuario"
+                    />
+                    
+                   
                 </h:panelGrid>                
             </ui:define>
             <ui:define name="update">
                 <h:panelGrid columns="2" cellpadding="3">
                     <c:text required="true" value="#{livroCrudMBean.bean.titulo}" label="Titulo" />
+   
+                    <c:text  required="true" value="#{livroCrudMBean.bean.isbn}" label="Isbn" />
+                    <c:text  required="true" value="#{livroCrudMBean.bean.editora}" label="Editora" />
+                    <c:text  required="true" value="#{livroCrudMBean.bean.descricao}" label="Descricao" />
+                    
+                   
+                    
+                    
                 </h:panelGrid>                
             </ui:define>
         </c:crud>
