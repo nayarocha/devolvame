@@ -5,15 +5,15 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:th="http://www.thymeleaf.org"
       >
-<h:head></h:head>
-<h:body>
+
+<body>
 
         <div>
             <img th:if="${userID}" 
                  th:src="'http://graph.facebook.com/'+ ${userID} + '/picture'"/>  
-            <span th:text="${facebookProfile}">You only live once</span>
-            <br/>            <a href="/livro.jsf">Acessar meus livros</a>
+            <span th:text="${facebookProfileName}">You only live once</span>
+            <br/>         Clique <a href="/livro.jsf">aqui</a> para acessar seus livros
         </div>
 
-    </h:body>
+    </body>
 </html>
